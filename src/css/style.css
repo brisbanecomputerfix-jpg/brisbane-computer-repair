@@ -55,18 +55,18 @@
 }
 
 :root {
-  /* Color System */
-  --color-primary-navy: #0F2942;      /* Trust and authority */
-  --color-primary-navy-light: #1A3E60;
-  --color-accent-amber: #D97706;      /* Primary Action / CTA */
-  --color-accent-amber-hover: #B45309;
-  --color-bg-base: #FAF9F6;           /* Warm Ivory/Cream (soft on senior eyes) */
-  --color-bg-card: #FFFFFF;
-  --color-text-dark: #1E293B;         /* High readability body text */
-  --color-text-muted: #475569;
-  --color-success-green: #10B981;
-  --color-border: #E2E8F0;
-  --color-focus-ring: #2563EB;
+  /* Color System (Isometric Tech) */
+  --color-primary-navy: #1e1b4b;      /* Deep Indigo */
+  --color-primary-navy-light: #312e81; /* Indigo Light */
+  --color-accent-amber: #10b981;      /* Neon Green */
+  --color-accent-amber-hover: #059669; /* Emerald 600 */
+  --color-bg-base: #f8fafc;           /* Slate 50 */
+  --color-bg-card: rgba(255, 255, 255, 0.85); /* Glass Card BG */
+  --color-text-dark: #020617;         /* Slate 950 */
+  --color-text-muted: #475569;        /* Slate 600 */
+  --color-success-green: #10b981;
+  --color-border: rgba(30, 27, 75, 0.1);
+  --color-focus-ring: #10b981;
   
   /* Senior Mode Overrides (Default state) */
   --font-scale-base: 16px;
@@ -76,8 +76,8 @@
   --card-padding: 2rem;
 
   /* Typography */
-  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: 'Plus Jakarta Sans', Georgia, serif;
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: 'Roboto Mono', monospace;
 }
 
 /* 2. Global Resets & Base Styles */
@@ -106,6 +106,16 @@ body {
 a:focus, button:focus, input:focus, textarea:focus {
   outline: 3px solid var(--color-focus-ring);
   outline-offset: 4px;
+}
+
+/* Glassmorphism Utilities */
+.glass-card {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
 }
 
 /* High Contrast Senior Mode Activation */
@@ -288,7 +298,7 @@ html.senior-active .nav-links a {
 
 /* 4. Hero Section */
 .hero {
-  background: radial-gradient(circle at 80% 20%, #FAF9F6 0%, #E2E8F0 100%);
+  background: var(--color-bg-base);
   padding: 4rem 1.5rem;
   border-bottom: 1px solid var(--color-border);
 }
@@ -1305,25 +1315,87 @@ html.senior-active .suburb-portal-link {
   padding: 1rem 1.5rem !important;
 }
 
-/* Hero Spline Interactive Container */
-.hero-spline-card {
+/* Isometric CSS Animation */
+.isometric-container {
   position: relative;
-  height: 350px;
-  background-color: #0F2942;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
 }
 
-.hero-spline-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(15, 41, 66, 0.2);
+.iso-cube {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg) rotateY(45deg);
+  animation: float-iso 6s ease-in-out infinite;
+}
+
+.iso-face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(16, 185, 129, 0.2);
+  border: 2px solid #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  color: #10b981;
+  font-weight: bold;
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.iso-face-top { transform: rotateX(90deg) translateZ(50px); }
+.iso-face-bottom { transform: rotateX(-90deg) translateZ(50px); }
+.iso-face-right { transform: rotateY(90deg) translateZ(50px); }
+.iso-face-left { transform: rotateY(-90deg) translateZ(50px); }
+.iso-face-front { transform: translateZ(50px); }
+.iso-face-back { transform: rotateY(180deg) translateZ(50px); }
+
+.iso-cube-inner {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  transform-style: preserve-3d;
+  animation: spin-iso 10s linear infinite;
+}
+
+.iso-inner-face {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: var(--color-primary-navy);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.iso-inner-face-top { transform: rotateX(90deg) translateZ(25px); }
+.iso-inner-face-bottom { transform: rotateX(-90deg) translateZ(25px); }
+.iso-inner-face-right { transform: rotateY(90deg) translateZ(25px); }
+.iso-inner-face-left { transform: rotateY(-90deg) translateZ(25px); }
+.iso-inner-face-front { transform: translateZ(25px); }
+.iso-inner-face-back { transform: rotateY(180deg) translateZ(25px); }
+
+@keyframes float-iso {
+  0% { transform: rotateX(-30deg) rotateY(45deg) translateY(0px); }
+  50% { transform: rotateX(-30deg) rotateY(45deg) translateY(-20px); }
+  100% { transform: rotateX(-30deg) rotateY(45deg) translateY(0px); }
+}
+
+@keyframes spin-iso {
+  0% { transform: rotateX(0) rotateY(0) rotateZ(0); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
 }
 
 /* Hide 3D Spline in Senior Mode to optimize accessibility & prevent distraction */
-html.senior-active .hero-spline-card {
+html.senior-active .isometric-container {
   display: none !important;
 }
 

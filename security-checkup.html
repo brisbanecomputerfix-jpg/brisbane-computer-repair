@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  
+  <title>Digital Security Checkup | Brisbane Computer Repair</title>
+  <meta name="description" content="Take our free digital security checkup to see if your computer, passwords, and data are safe from hackers and scams.">
+  <link rel="canonical" href="https://brisbanecomputerrepair.au/security-checkup.html">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/src/css/style.css">
+  <style>
+    .quiz-container {
+      background-color: var(--color-bg-base);
+      border-radius: 16px;
+      padding: 2.5rem;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .question-box {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .question-box:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .question-title {
+      font-size: 1.2rem;
+      color: var(--color-primary-navy);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background-color: var(--color-bg-alt);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .option-label:hover {
+      background-color: #e2e8f0;
+    }
+    input[type="radio"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--color-primary-navy);
+    }
+  </style>
+</head>
+<body class="theme-light">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="/" class="logo">
+        <div class="logo-icon">💻</div>
+        <div class="logo-text">
+          <h1>Brisbane Computer Repair</h1>
+          <span class="logo-sub">Honest, Local, Mobile IT Support</span>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/workbench-stories.html">Workbench Stories</a>
+        <a href="/security-checkup.html" class="active">Security Checkup</a>
+        <a href="/#contact" class="btn-primary" style="margin-left: 1rem;">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section-container" style="padding-top: 8rem; padding-bottom: 5rem;">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+        <h1 class="section-title speak-target">Free Digital Security Checkup</h1>
+        <p class="speak-target" style="font-size: 1.15rem; color: var(--color-text-muted);">
+          Scams and viruses are becoming more sophisticated. Take this quick 3-minute test to identify vulnerabilities in your home setup.
+        </p>
+      </div>
+
+      <div class="quiz-container speak-target">
+        
+        <div class="question-box">
+          <div class="question-title">1. How do you manage your passwords?</div>
+          <div class="options">
+            <label class="option-label">
+              <input type="radio" name="q1" value="bad"> I use the same 1 or 2 passwords for everything.
+            </label>
+            <label class="option-label">
+              <input type="radio" name="q1" value="okay"> I write them down in a notebook on my desk.
+            </label>
+            <label class="option-label">
+              <input type="radio" name="q1" value="good"> I use a secure Password Manager app or my browser's built-in manager.
+            </label>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <div class="question-title">2. Are your important photos and documents backed up?</div>
+          <div class="options">
+            <label class="option-label">
+              <input type="radio" name="q2" value="bad"> No, they only exist on this computer/phone.
+            </label>
+            <label class="option-label">
+              <input type="radio" name="q2" value="okay"> Yes, I manually copy them to a USB stick sometimes.
+            </label>
+            <label class="option-label">
+              <input type="radio" name="q2" value="good"> Yes, I have an automatic cloud backup (Google Drive, iCloud) AND a physical hard drive.
+            </label>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <div class="question-title">3. What do you do if you get an unexpected email from "The ATO" or "Australia Post" with a link?</div>
+          <div class="options">
+            <label class="option-label">
+              <input type="radio" name="q3" value="bad"> I click the link to see what they want.
+            </label>
+            <label class="option-label">
+              <input type="radio" name="q3" value="good"> I ignore it, or go directly to the official website by typing the address myself.
+            </label>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <button type="button" class="btn-primary" onclick="alert('Thank you for taking the test! If you answered poorly to any of these, consider booking Ike for a Security Audit.')">Submit & Get Results</button>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- React Footer Mount Point -->
+  <div id="react-footer-root"></div>
+  <script type="module" src="/src/js/react-mount.tsx"></script>
+
+</body>
+</html>

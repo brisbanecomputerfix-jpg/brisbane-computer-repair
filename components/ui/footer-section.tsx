@@ -56,8 +56,17 @@ function Footerdemo() {
               <a href="/" className="block transition-colors hover:text-primary">
                 Home
               </a>
-              <a href="/services.html" className="block transition-colors hover:text-primary">
+              <a href="/#services" className="block transition-colors hover:text-primary">
                 Services
+              </a>
+              <a href="/workbench-stories.html" className="block transition-colors hover:text-primary">
+                Workbench Stories
+              </a>
+              <a href="/blog.html" className="block transition-colors hover:text-primary">
+                Blog
+              </a>
+              <a href="/security-checkup.html" className="block transition-colors hover:text-primary">
+                Security Checkup
               </a>
               <a href="/#about" className="block transition-colors hover:text-primary">
                 About Us

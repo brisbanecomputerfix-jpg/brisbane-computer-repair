@@ -22,7 +22,7 @@
   <!-- Fonts (Outfit for clean headings, Plus Jakarta Sans for body text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Local Design Style -->
   <link rel="stylesheet" href="/src/css/style.css">
@@ -115,8 +115,6 @@
     }
   }
   </script>
-  <!-- Spline 3D Viewer Web Component (Loaded asynchronously for speed) -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.0/build/spline-viewer.js" async></script>
 </head>
 <body>
 
@@ -162,9 +160,13 @@
 
   <main>
     <!-- 2. Hero Section -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-container">
-        <div class="hero-content">
+    <section class="hero" aria-labelledby="hero-title" style="position: relative; overflow: hidden;">
+      <!-- Decorative Glassmorphism Blobs -->
+      <div style="position: absolute; top: -100px; left: -100px; width: 400px; height: 400px; background: var(--color-accent-amber); border-radius: 50%; filter: blur(100px); opacity: 0.15; pointer-events: none; z-index: 0;"></div>
+      <div style="position: absolute; bottom: -100px; right: -100px; width: 500px; height: 500px; background: var(--color-primary-navy); border-radius: 50%; filter: blur(120px); opacity: 0.1; pointer-events: none; z-index: 0;"></div>
+
+      <div class="hero-container" style="position: relative; z-index: 1;">
+        <div class="hero-content glass-card" style="padding: 2.5rem;">
           <h2 id="hero-title" class="speak-target" data-speak="Welcome to Brisbane Computer Repair. We make computer repairs simple, stress-free, and completely jargon-free for local seniors.">
             Brisbane Computer Repairs Made Simple & Jargon-Free
           </h2>
@@ -186,20 +188,38 @@
           </div>
         </div>
 
-        <!-- Hero Right Column: Interactive 3D Spline Scene & Trust Badge -->
+        <!-- Hero Right Column: Interactive CSS Isometric Scene & Trust Badge -->
         <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
-          <!-- Interactive 3D Spline Scene -->
-          <div class="hero-spline-card">
-            <div style="position: absolute; top: 1.2rem; left: 1.2rem; z-index: 10; pointer-events: none;">
-              <span style="background-color: rgba(15, 41, 66, 0.85); color: #FFFFFF; font-size: 0.75rem; font-weight: 800; padding: 0.4rem 0.8rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(4px);">🎮 Interactive 3D Scene</span>
+          <!-- Interactive CSS Isometric Scene -->
+          <div class="isometric-container glass-card" style="border-radius: 24px; background-color: var(--color-primary-navy);">
+            <div class="iso-cube">
+              <!-- Outer transparent cube (The "Chassis") -->
+              <div class="iso-face iso-face-front"></div>
+              <div class="iso-face iso-face-back"></div>
+              <div class="iso-face iso-face-right"></div>
+              <div class="iso-face iso-face-left"></div>
+              <div class="iso-face iso-face-top">IT</div>
+              <div class="iso-face iso-face-bottom"></div>
+              
+              <!-- Inner solid cube (The "Core") -->
+              <div class="iso-cube-inner">
+                <div class="iso-inner-face iso-inner-face-front"></div>
+                <div class="iso-inner-face iso-inner-face-back"></div>
+                <div class="iso-inner-face iso-inner-face-right"></div>
+                <div class="iso-inner-face iso-inner-face-left"></div>
+                <div class="iso-inner-face iso-inner-face-top"></div>
+                <div class="iso-inner-face iso-inner-face-bottom"></div>
+              </div>
             </div>
-            <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" style="width: 100%; height: 100%; display: block;"></spline-viewer>
+            <div style="position: absolute; top: 1.2rem; left: 1.2rem; z-index: 10;">
+              <span style="background-color: rgba(15, 41, 66, 0.85); color: #FFFFFF; font-size: 0.75rem; font-weight: 800; padding: 0.4rem 0.8rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(4px);">⚙️ Tech Ready</span>
+            </div>
           </div>
 
           <!-- Trust Card with Technician Avatar -->
-          <div class="trust-badge-card" style="margin-top: 0; width: 100%;">
-            <img src="/images/ike_support.png" alt="Friendly computer technician Ike helping an elderly customer with a laptop computer in a home office" class="avatar">
-            <p class="avatar-label">Meet Ike</p>
+          <div class="trust-badge-card glass-card" style="margin-top: 0; width: 100%; padding: 1.5rem; text-align: center; border-radius: 24px;">
+            <img src="/images/ike_support.png" alt="Friendly computer technician Ike helping an elderly customer with a laptop computer in a home office" class="avatar" style="width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 1rem; border: 3px solid var(--color-accent-amber);">
+            <p class="avatar-label" style="font-weight: 700; font-family: var(--font-serif); font-size: 1.2rem; margin-bottom: 0.2rem;">Meet Ike</p>
             <p class="avatar-sub">Your Dedicated Local Technician</p>
             <div style="background-color: #FEF3C7; padding: 0.8rem; border-radius: 12px; font-weight: 700; color: #B45309;" class="speak-target">
               ⭐ 5/5 Stars from 200+ Google Reviews
@@ -218,32 +238,32 @@
         <p class="remote-control-sub speak-target">Click on the issue you are experiencing below to see how Ike can help you right away:</p>
         
         <div class="remote-grid">
-          <button class="remote-btn speak-target" data-problem="wontStart" aria-label="Select: My Computer Won't Start or is too slow" data-speak="Select this if your desktop or laptop computer is completely dead, won't turn on, or takes a very long time to start up.">
-            <span class="remote-icon" aria-hidden="true">💻</span>
+          <button class="remote-btn glass-card speak-target" data-problem="wontStart" aria-label="Select: My Computer Won't Start or is too slow" data-speak="Select this if your desktop or laptop computer is completely dead, won't turn on, or takes a very long time to start up." style="padding: 1.5rem; text-align: left; display: flex; gap: 1rem; align-items: flex-start; transition: all 0.3s ease;">
+            <span class="remote-icon" aria-hidden="true" style="font-size: 2.5rem;">💻</span>
             <div class="remote-text-content">
               <h3>Computer Won't Start / Slow</h3>
               <p>It's completely dead, frozen, or takes hours to load.</p>
             </div>
           </button>
 
-          <button class="remote-btn speak-target" data-problem="scamWarning" aria-label="Select: I got a suspicious scam message or popup" data-speak="Select this if you received a suspicious message, phone call, or email, or if you got a popup saying your computer has a virus.">
-            <span class="remote-icon" aria-hidden="true">⚠️</span>
+          <button class="remote-btn glass-card speak-target" data-problem="scamWarning" aria-label="Select: I got a suspicious scam message or popup" data-speak="Select this if you received a suspicious message, phone call, or email, or if you got a popup saying your computer has a virus." style="padding: 1.5rem; text-align: left; display: flex; gap: 1rem; align-items: flex-start; transition: all 0.3s ease;">
+            <span class="remote-icon" aria-hidden="true" style="font-size: 2.5rem;">⚠️</span>
             <div class="remote-text-content">
               <h3>Suspicious Scam / Security</h3>
               <p>Scary popup messages, fake bank phone calls, or spam emails.</p>
             </div>
           </button>
 
-          <button class="remote-btn speak-target" data-problem="setupComputer" aria-label="Select: Help setting up a new computer or printer" data-speak="Select this if you need friendly help setting up a brand new computer, connecting a printer, setting up email, or getting onto the internet.">
-            <span class="remote-icon" aria-hidden="true">🔌</span>
+          <button class="remote-btn glass-card speak-target" data-problem="setupComputer" aria-label="Select: Help setting up a new computer or printer" data-speak="Select this if you need friendly help setting up a brand new computer, connecting a printer, setting up email, or getting onto the internet." style="padding: 1.5rem; text-align: left; display: flex; gap: 1rem; align-items: flex-start; transition: all 0.3s ease;">
+            <span class="remote-icon" aria-hidden="true" style="font-size: 2.5rem;">🔌</span>
             <div class="remote-text-content">
               <h3>New Setup & Tutorials</h3>
               <p>Setting up new computers, printers, emails, or learning basic skills.</p>
             </div>
           </button>
 
-          <button class="remote-btn speak-target" data-problem="brokenScreen" aria-label="Select: Macbook Repair, screen fix, or liquid damage" data-speak="Select this if you spilled water or coffee on your laptop, or if your Macbook screen is broken or needs logic board repair.">
-            <span class="remote-icon" aria-hidden="true">🍏</span>
+          <button class="remote-btn glass-card speak-target" data-problem="brokenScreen" aria-label="Select: Macbook Repair, screen fix, or liquid damage" data-speak="Select this if you spilled water or coffee on your laptop, or if your Macbook screen is broken or needs logic board repair." style="padding: 1.5rem; text-align: left; display: flex; gap: 1rem; align-items: flex-start; transition: all 0.3s ease;">
+            <span class="remote-icon" aria-hidden="true" style="font-size: 2.5rem;">🍏</span>
             <div class="remote-text-content">
               <h3>Macbook & Screen Repairs</h3>
               <p>Spilled water/coffee, cracked screens, or Apple Mac component fixes.</p>
@@ -541,37 +561,123 @@
       </div>
     </section>
 
+    <!-- 8.5 Recent Repairs (Workbench Stories) -->
+    <section class="callback-section" style="background-color: #FFFFFF; padding: 5rem 1.5rem;" aria-labelledby="workbench-title">
+      <div class="section-container" style="max-width: 1000px; margin: 0 auto; text-align: center;">
+        <h2 id="workbench-title" class="section-title speak-target" style="color: var(--color-primary-navy);">Recent Repairs & Workbench Stories</h2>
+        <p class="speak-target" style="font-size: 1.15rem; color: var(--color-text-muted); max-width: 700px; margin: 0 auto 3rem;">
+          Take a look at some of the recent computer repairs we've successfully completed for locals across Brisbane.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: left;">
+          <div style="background-color: var(--color-bg-base); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--color-border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+            <div style="font-size: 0.85rem; color: var(--color-accent-amber); font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">Laptop Screen Repair</div>
+            <h3 style="color: var(--color-primary-navy); margin-bottom: 0.75rem;">MacBook Pro Screen Fixed in Indooroopilly</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Replaced a completely shattered Retina display for a university student. Completed in under 4 hours.</p>
+          </div>
+          <div style="background-color: var(--color-bg-base); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--color-border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+            <div style="font-size: 0.85rem; color: var(--color-accent-amber); font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">Data Recovery</div>
+            <h3 style="color: var(--color-primary-navy); margin-bottom: 0.75rem;">Recovered 10 Years of Photos from Dead Drive</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1rem;">A clicking external hard drive wouldn't mount. We successfully imaged the drive and recovered 100% of the family photos.</p>
+          </div>
+          <div style="background-color: var(--color-bg-base); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--color-border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+            <div style="font-size: 0.85rem; color: var(--color-accent-amber); font-weight: 800; text-transform: uppercase; margin-bottom: 0.5rem;">PC Upgrade</div>
+            <h3 style="color: var(--color-primary-navy); margin-bottom: 0.75rem;">10x Speed Boost for Slow Dell Desktop</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 1rem;">Cloned an old spinning HDD to a new lightning-fast NVMe SSD. The computer now boots in 8 seconds.</p>
+          </div>
+        </div>
+        <div style="margin-top: 3rem;">
+          <a href="/workbench-stories.html" class="btn-primary" style="background-color: var(--color-primary-navy);">Read More Stories</a>
+        </div>
+      </div>
+    </section>
+
     <!-- 9. FAQ Accordion Section -->
     <section id="faq" class="faq-section" aria-labelledby="faq-title">
       <div class="section-container">
         <h2 id="faq-title" class="section-title speak-target">Frequently Asked Questions</h2>
         
         <div class="faq-list">
-          <div class="faq-item speak-target" data-speak="First Question: What does No Fix, No Fee mean? If Ike examines your computer and finds that it is physically impossible to repair or salvage, you do not pay a single cent. We believe you should only pay for working solutions.">
+          <div class="faq-item speak-target">
             <button class="faq-question">What does "No Fix, No Fee" mean?</button>
             <div class="faq-answer">
               <p>If Ike diagnoses your computer and finds it cannot be physically repaired or salvaged, you pay nothing. We believe you should only pay for results, not diagnostic failures.</p>
             </div>
           </div>
 
-          <div class="faq-item speak-target" data-speak="Second Question: Do you charge travel or call out fees? No, we never charge travel fees anywhere in the Brisbane metropolitan region. You only pay our flat labor rate of one hundred and seventy dollars.">
+          <div class="faq-item speak-target">
             <button class="faq-question">Do you charge travel or call-out fees?</button>
             <div class="faq-answer">
               <p>No, we never charge travel or call-out fees. Whether you live in Indooroopilly, Kenmore, or Newstead, you pay the same $170 flat rate for labor.</p>
             </div>
           </div>
 
-          <div class="faq-item speak-target" data-speak="Third Question: Do I need to bring my computer to you? Ike is a mobile service, so he will come directly to your home or office. If the repair is highly complex, he will take it to his workshop and return it to you at no extra cost.">
+          <div class="faq-item speak-target">
             <button class="faq-question">Do I need to bring my computer to you?</button>
             <div class="faq-answer">
               <p>No! Ike is a mobile service. He will come directly to your home or office to perform the repair. If the repair requires advanced workshop tools (like microscopic logic board solder work), he will take it, repair it, and bring it back to you at no extra charge.</p>
             </div>
           </div>
 
-          <div class="faq-item speak-target" data-speak="Fourth Question: Can you help me learn how to use my iPad, phone, or computer? Yes! Ike provides friendly, slow-paced digital tutoring. He can show you how to securely send emails, check bank statements, write documents, and browse the web safely.">
+          <div class="faq-item speak-target">
             <button class="faq-question">Can you help me learn how to use my device?</button>
             <div class="faq-answer">
               <p>Yes! Ike offers friendly, slow-paced digital tutoring. He can show you how to securely email family, organize files, back up photos, use password managers, and navigate your iPad or smartphone safely.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item speak-target">
+            <button class="faq-question">How much does a laptop screen repair cost?</button>
+            <div class="faq-answer">
+              <p>Labor is always our flat $170 rate. The screen itself varies based on your specific laptop model (usually between $100 and $300 for PC laptops, and more for Retina MacBooks). We provide an exact quote before proceeding.</p>
+            </div>
+          </div>
+
+          <div class="faq-item speak-target">
+            <button class="faq-question">Do you recover data from dead hard drives?</button>
+            <div class="faq-answer">
+              <p>Yes, we offer professional data recovery services. Whether it's a clicking hard drive, a dead SSD, or accidentally deleted files, we use advanced tools to retrieve your data securely.</p>
+            </div>
+          </div>
+
+          <div class="faq-item speak-target">
+            <button class="faq-question">Is my Mac or PC too old to fix?</button>
+            <div class="faq-answer">
+              <p>Not necessarily! Many older computers just need a Solid State Drive (SSD) upgrade and a RAM boost to run like new again. We will honestly evaluate your device and tell you if it's better to repair it or replace it.</p>
+            </div>
+          </div>
+
+          <div class="faq-item speak-target">
+            <button class="faq-question">Do you fix Apple computers like MacBooks and iMacs?</button>
+            <div class="faq-answer">
+              <p>Absolutely. Ike is a Mac specialist capable of everything from macOS software troubleshooting to logic board micro-soldering and battery replacements.</p>
+            </div>
+          </div>
+
+          <div class="faq-item speak-target">
+            <button class="faq-question">How quickly can you fix my computer?</button>
+            <div class="faq-answer">
+              <p>We pride ourselves on same-day service. For most software issues, virus removals, and basic setups, the job is completed on the spot during the first visit.</p>
+            </div>
+          </div>
+
+          <div class="faq-item speak-target">
+            <button class="faq-question">Can you help set up a new Wi-Fi router or printer?</button>
+            <div class="faq-answer">
+              <p>Yes, we excel at home networking. We can configure your NBN connection, boost your Wi-Fi signal to reach dead zones, and securely connect all your wireless printers and smart TVs.</p>
+            </div>
+          </div>
+
+          <div class="faq-item speak-target">
+            <button class="faq-question">My computer is very slow. Can you speed it up?</button>
+            <div class="faq-answer">
+              <p>Yes! A slow computer is often caused by a failing hard drive, malware, or insufficient memory. We can diagnose the exact bottleneck and perform an SSD upgrade or virus removal to restore speed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item speak-target">
+            <button class="faq-question">What payment methods do you accept?</button>
+            <div class="faq-answer">
+              <p>We accept all major Credit and Debit Cards (Visa, MasterCard, Amex) via our secure mobile EFTPOS terminal, as well as Cash and direct Bank Transfers upon completion of the work.</p>
             </div>
           </div>
         </div>
