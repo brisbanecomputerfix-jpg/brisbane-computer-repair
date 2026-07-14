@@ -23,7 +23,10 @@ export default defineConfig({
         services: resolve(__dirname, 'services.html'),
         privacy: resolve(__dirname, 'privacy-policy.html'),
         terms: resolve(__dirname, 'terms.html'),
-        disclaimer: resolve(__dirname, 'disclaimer.html')
+        disclaimer: resolve(__dirname, 'disclaimer.html'),
+        blog: resolve(__dirname, 'blog.html'),
+        workbench: resolve(__dirname, 'workbench-stories.html'),
+        security: resolve(__dirname, 'security-checkup.html')
       }
     }
   }
