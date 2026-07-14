@@ -1,0 +1,260 @@
+---
+name: liquid-glass
+description: Use this skill to integrate the Liquid Glass interactive background component, complete with a Mac-like dock and a glassmorphism button, into an existing React/Tailwind/Shadcn project.
+---
+
+# Liquid Glass Component Skill
+
+This skill provides instructions and code to implement a beautiful Liquid Glass interactive component with a Mac-like dock and a glassmorphism button. The component creates a full-screen or contained interactive background.
+
+## Prerequisites
+- The project must use React and Tailwind CSS.
+- The project should be configured for Shadcn UI components.
+- The project must support `@/` path aliasing (e.g., `@/components/ui/liquid-glass`).
+- `lucide-react` is recommended for icons if you prefer SVG icons instead of Unsplash placeholder images.
+
+## 1. Create the Component
+
+Create a new file `components/ui/liquid-glass.tsx` and paste the following code:
+
+```tsx
+"use client";
+
+import React from "react";
+
+// Types
+interface GlassEffectProps {
+  children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
+  href?: string;
+  target?: string;
+}
+
+interface DockIcon {
+  src: string;
+  alt: string;
+  onClick?: () => void;
+}
+
+// Glass Effect Wrapper Component
+const GlassEffect: React.FC<GlassEffectProps> = ({
+  children,
+  className = "",
+  style = {},
+  href,
+  target = "_blank",
+}) => {
+  const glassStyle = {
+    boxShadow: "0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1)",
+    transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 2.2)",
+    ...style,
+  };
+
+  const content = (
+    <div
+      className={`relative flex font-semibold overflow-hidden text-black cursor-pointer transition-all duration-700 ${className}`}
+      style={glassStyle}
+    >
+      {/* Glass Layers */}
+      <div
+        className="absolute inset-0 z-0 overflow-hidden rounded-[inherit] rounded-3xl"
+        style={{
+          backdropFilter: "blur(3px)",
+          filter: "url(#glass-distortion)",
+          isolation: "isolate",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-10 rounded-[inherit]"
+        style={{ background: "rgba(255, 255, 255, 0.25)" }}
+      />
+      <div
+        className="absolute inset-0 z-20 rounded-[inherit] rounded-3xl overflow-hidden"
+        style={{
+          boxShadow:
+            "inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5), inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5)",
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative z-30">{children}</div>
+    </div>
+  );
+
+  return href ? (
+    <a href={href} target={target} rel="noopener noreferrer" className="block">
+      {content}
+    </a>
+  ) : (
+    content
+  );
+};
+
+// Dock Component
+const GlassDock: React.FC<{ icons: DockIcon[]; href?: string }> = ({
+  icons,
+  href,
+}) => (
+  <GlassEffect
+    href={href}
+    className="rounded-3xl p-3 hover:p-4 hover:rounded-[2rem]"
+  >
+    <div className="flex items-center justify-center gap-2 rounded-3xl p-3 py-0 px-0.5 overflow-hidden">
+      {icons.map((icon, index) => (
+        <img
+          key={index}
+          src={icon.src}
+          alt={icon.alt}
+          className="w-16 h-16 transition-all duration-700 hover:scale-110 cursor-pointer"
+          style={{
+            transformOrigin: "center center",
+            transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 2.2)",
+          }}
+          onClick={icon.onClick}
+        />
+      ))}
+    </div>
+  </GlassEffect>
+);
+
+// Button Component
+const GlassButton: React.FC<{ children: React.ReactNode; href?: string }> = ({
+  children,
+  href,
+}) => (
+  <GlassEffect
+    href={href}
+    className="rounded-3xl px-10 py-6 hover:px-11 hover:py-7 hover:rounded-[2rem] overflow-hidden"
+  >
+    <div
+      className="transition-all duration-700 hover:scale-95"
+      style={{
+        transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 2.2)",
+      }}
+    >
+      {children}
+    </div>
+  </GlassEffect>
+);
+
+// SVG Filter Component
+const GlassFilter: React.FC = () => (
+  <svg style={{ display: "none" }}>
+    <filter
+      id="glass-distortion"
+      x="0%"
+      y="0%"
+      width="100%"
+      height="100%"
+      filterUnits="objectBoundingBox"
+    >
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.001 0.005"
+        numOctaves="1"
+        seed="17"
+        result="turbulence"
+      />
+      <feComponentTransfer in="turbulence" result="mapped">
+        <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+        <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+        <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+      </feComponentTransfer>
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+      <feSpecularLighting
+        in="softMap"
+        surfaceScale="5"
+        specularConstant="1"
+        specularExponent="100"
+        lightingColor="white"
+        result="specLight"
+      >
+        <fePointLight x="-200" y="-200" z="300" />
+      </feSpecularLighting>
+      <feComposite
+        in="specLight"
+        operator="arithmetic"
+        k1="0"
+        k2="1"
+        k3="1"
+        k4="0"
+        result="litImage"
+      />
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="softMap"
+        scale="200"
+        xChannelSelector="R"
+        yChannelSelector="G"
+      />
+    </filter>
+  </svg>
+);
+// Main Component
+export const Component = () => {
+  const dockIcons: DockIcon[] = [
+    {
+      src: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=64&h=64&fit=crop",
+      alt: "Icon 1",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=64&h=64&fit=crop",
+      alt: "Icon 2",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=64&h=64&fit=crop",
+      alt: "Icon 3",
+    },
+  ];
+
+  return (
+    <div
+      className="h-[500px] flex items-center justify-center font-light relative overflow-hidden w-full rounded-2xl my-8 shadow-xl"
+      style={{
+        background: `url("https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=1080&auto=format&fit=crop") center center / cover`,
+        animation: "moveBackground 60s linear infinite",
+      }}
+    >
+      <GlassFilter />
+
+      <div className="flex flex-col gap-6 items-center justify-center w-full relative z-10">
+        <GlassDock icons={dockIcons} href="#" />
+
+        <GlassButton href="#">
+          <div className="text-xl text-white font-bold" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+            <p>How can I help you today?</p>
+          </div>
+        </GlassButton>
+      </div>     
+    </div>
+  );
+}
+```
+
+## 2. Update CSS
+
+Add the background movement keyframe to the global CSS file (e.g. `style.css` or `globals.css`):
+
+```css
+@keyframes moveBackground {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 0% -1000%;
+  }
+}
+```
+
+## 3. Usage
+
+Import the component into your application or demo file. 
+
+```tsx
+import { Component as LiquidGlassComponent } from "@/components/ui/liquid-glass";
+
+export const LiquidGlassDemo = () => {
+  return <LiquidGlassComponent />;
+};
+```

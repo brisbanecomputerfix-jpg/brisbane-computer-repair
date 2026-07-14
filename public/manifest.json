@@ -1,0 +1,21 @@
+{
+  "name": "Brisbane Computer Repair",
+  "short_name": "Ike Repair",
+  "description": "Expert local computer repairs in Brisbane by Ike. Same-day service, flat $170 labor fee, and senior-friendly support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#0F172A",
+  "icons": [
+    {
+      "src": "/images/ike_support.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/ike_support.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
