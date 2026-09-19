@@ -208,6 +208,14 @@
       font-size: 17px;
     }
 
+    /* Fixed Header Anchor Scroll Alignment */
+    section[id],
+    article[id],
+    div[id].bank-spotlight-wrap,
+    .service-squircle-card[id] {
+      scroll-margin-top: 88px;
+    }
+
     body {
       font-family: var(--font-system);
       background-color: var(--canvas);
@@ -538,7 +546,103 @@
     .nav-cta-group {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+    }
+    .nav-cta-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      line-height: 1.22;
+      user-select: none;
+    }
+    .nav-cta-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--apple-green-dark);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .nav-cta-hours {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--slate);
+    }
+    .nav-phone-btn {
+      padding: 8px 16px;
+      min-height: 44px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 14px rgba(52, 199, 89, 0.35);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-phone-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(52, 199, 89, 0.45);
+    }
+    .nav-btn-labels {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.15;
+    }
+    .nav-btn-call {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      opacity: 0.95;
+    }
+    .nav-btn-price {
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    .nav-btn-number {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+    .phone-wiggle-icon {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+    .nav-phone-btn:hover .phone-wiggle-icon {
+      animation: phoneWiggle 0.4s ease infinite alternate;
+    }
+    @keyframes phoneWiggle {
+      0% { transform: rotate(-8deg); }
+      100% { transform: rotate(8deg); }
+    }
+
+    @media (max-width: 1220px) {
+      .nav-cta-meta {
+        display: none;
+      }
+    }
+    @media (max-width: 991px) {
+      .nav-btn-price {
+        display: none;
+      }
+      .nav-phone-btn {
+        padding: 8px 14px;
+      }
+      .nav-btn-number {
+        font-size: 14px;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav-btn-call {
+        display: none;
+      }
+      .nav-phone-btn {
+        padding: 8px 12px;
+        min-height: 40px;
+      }
     }
     .sidebar-trigger-btn {
       display: flex;
@@ -1799,6 +1903,8 @@
           <li><a href="#technician">Lead Technician Credentials (E-E-A-T)</a></li>
           <li><a href="#faq">Frequently Asked Questions</a></li>
           <li><a href="https://g.page/computer-geek" target="_blank" rel="noopener noreferrer">Google Business Profile (g.page) ↗</a></li>
+          <li><a href="terms.html">Terms of Service & Repair Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy (APPs / Privacy Act)</a></li>
         </ul>
       </div>
 
@@ -2031,9 +2137,19 @@
       </nav>
 
       <div class="nav-cta-group">
-        <a href="tel:+61468991300" class="btn btn-green" style="padding: 10px 18px; font-size: 15px; min-height: 42px;">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>0468 991 300</span>
+        <div class="nav-cta-meta" title="Greater Brisbane On-Site Computer Repair">
+          <div class="nav-cta-status">
+            <span class="pulse-dot"></span>
+            <span>Tech On-Call Now</span>
+          </div>
+          <div class="nav-cta-hours">8am–8pm · No Call-Out Fee</div>
+        </div>
+        <a href="tel:+61468991300" class="btn btn-green nav-phone-btn" aria-label="Call Ike at 0468 991 300">
+          <svg class="phone-wiggle-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div class="nav-btn-labels">
+            <span class="nav-btn-call">Call Now <span class="nav-btn-price">· Flat $150–$170</span></span>
+            <span class="nav-btn-number">0468 991 300</span>
+          </div>
         </a>
       </div>
     </div>
@@ -2947,6 +3063,8 @@
             <li><a href="#gaming-bench">Gaming Laptop Bench</a></li>
             <li><a href="#technician">E-E-A-T Trust Profile</a></li>
             <li><a href="#faq">Frequently Asked Questions</a></li>
+            <li><a href="terms.html">Terms of Service & Repair Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy (APPs)</a></li>
           </ul>
         </div>
 
@@ -2963,9 +3081,15 @@
         </div>
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; font-size: 13px; color: #64748b;">
-        <span>© <span id="year">2026</span> Brisbane Computer Repair (Computer Repair 1). All rights reserved.</span>
-        <span>Mobile dispatch across Greater Brisbane, Queensland, Australia.</span>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; font-size: 13px; color: #64748b; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); margin-top: 24px;">
+        <span>© <span id="year">2026</span> Brisbane Computer Repair (Computer Repair 1 · ABN 98 288 669 674). All rights reserved.</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+          <a href="terms.html" style="color: #94a3b8; text-decoration: none; transition: color 0.15s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">Terms of Service</a>
+          <span>·</span>
+          <a href="privacy.html" style="color: #94a3b8; text-decoration: none; transition: color 0.15s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">Privacy Policy</a>
+          <span>·</span>
+          <span>Mobile dispatch across Greater Brisbane, QLD</span>
+        </div>
       </div>
     </div>
   </footer>
