@@ -335,25 +335,204 @@
     .desktop-nav {
       display: none;
       align-items: center;
-      gap: 18px;
+      gap: 6px;
       list-style: none;
     }
-    @media (min-width: 960px) {
+    @media (min-width: 992px) {
       .desktop-nav {
         display: flex;
       }
     }
-    .desktop-nav a {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: var(--slate);
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-      transition: all 0.15s ease;
+    .nav-dropdown-item {
+      position: relative;
     }
-    .desktop-nav a:hover {
+    .nav-dropdown-btn,
+    .nav-direct-pill {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink-secondary);
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+    .nav-dropdown-btn:hover,
+    .nav-direct-pill:hover,
+    .nav-dropdown-item:hover > .nav-dropdown-btn,
+    .nav-dropdown-item:focus-within > .nav-dropdown-btn {
+      color: var(--apple-blue);
+      background: rgba(0, 113, 227, 0.07);
+    }
+    .dropdown-chevron {
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .nav-dropdown-item:hover .dropdown-chevron,
+    .nav-dropdown-item:focus-within .dropdown-chevron {
+      transform: rotate(180deg);
+      color: var(--apple-blue);
+    }
+    .nav-star-pill {
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(245, 158, 11, 0.14);
+      color: #b45309;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    /* Dropdown Glass Container */
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 48px -8px rgba(11, 21, 35, 0.18), 0 1px 3px rgba(11, 21, 35, 0.06);
+      padding: 10px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+      z-index: 150;
+    }
+    /* Invisible hover bridge */
+    .nav-dropdown-item::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      display: block;
+    }
+    .nav-dropdown-item:hover > .nav-dropdown-menu,
+    .nav-dropdown-item:focus-within > .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+
+    /* Wide Grid for Services */
+    .nav-dropdown-wide {
+      width: 620px;
+      max-width: 90vw;
+    }
+    .dropdown-menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    .dropdown-menu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Dropdown Link Card */
+    .dropdown-link-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background-color 0.15s ease, transform 0.15s ease;
+    }
+    .dropdown-link-card:hover {
+      background: #f1f5f9;
+      transform: translateX(2px);
+    }
+    .dropdown-icon-bubble {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dropdown-item-content {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+    .dropdown-item-title {
+      font-size: 13.5px;
+      font-weight: 800;
       color: var(--ink);
-      background: rgba(11, 21, 35, 0.04);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dropdown-item-desc {
+      font-size: 11.5px;
+      color: var(--slate);
+      font-weight: 500;
+      margin-top: 2px;
+      line-height: 1.35;
+    }
+    .dropdown-tag {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: var(--slate);
+    }
+    .tag-blue {
+      background: rgba(0, 113, 227, 0.12);
+      color: var(--apple-blue);
+    }
+    .tag-green {
+      background: var(--apple-green-soft);
+      color: var(--apple-green-dark);
+    }
+    .dropdown-footer-bar {
+      margin-top: 8px;
+      padding: 8px 12px;
+      background: #f8fafc;
+      border-radius: 10px;
+      font-size: 12px;
+      color: var(--slate);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dropdown-footer-bar a {
+      color: var(--apple-blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 1160px) {
+      .brand-status-pill span:last-child {
+        display: none;
+      }
+      .brand-status-pill::after {
+        content: "No Call-Out Fee";
+      }
+    }
+    @media (max-width: 991px) {
+      .brand-status-pill {
+        display: none;
+      }
     }
 
     .nav-cta-group {
@@ -1661,14 +1840,193 @@
 
       <nav aria-label="Main Navigation">
         <ul class="desktop-nav">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#estimator">Estimator</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#bank-clearance">Bank Clearance</a></li>
-          <li><a href="#service-area">Suburbs</a></li>
-          <li><a href="#technician">E-E-A-T Trust</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <!-- Dropdown 1: Services -->
+          <li class="nav-dropdown-item">
+            <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+              <span>Services</span>
+              <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown-menu nav-dropdown-wide" role="menu">
+              <div class="dropdown-menu-grid">
+                <a href="#services" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#edf5ff; color:#0071e3;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">MacBook & PC Screens <span class="dropdown-tag">Retail Cost</span></div>
+                    <div class="dropdown-item-desc">Retina M1/M2/M3 & Windows displays fitted on-site.</div>
+                  </div>
+                </a>
+
+                <a href="#bank-clearance" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#fef2f2; color:#ef4444;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Bank Clearance Reports <span class="dropdown-tag tag-blue">Official</span></div>
+                    <div class="dropdown-item-desc">Forensic remote tool purge & signed bank certificates.</div>
+                  </div>
+                </a>
+
+                <a href="#gaming-bench" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#f3e8ff; color:#9333ea;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4m7-2h.01m3 0h.01"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Gaming Laptop Bench</div>
+                    <div class="dropdown-item-desc">MSI, Razer & ASUS ROG fans, liquid metal & BSOD fixes.</div>
+                  </div>
+                </a>
+
+                <a href="#hardware-fixes" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#e0f2fe; color:#0284c7;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0-.33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Hinges, BIOS & HP Fans</div>
+                    <div class="dropdown-item-desc">Re-anchor snapped metal brackets; solve HP 90B error.</div>
+                  </div>
+                </a>
+
+                <a href="#services" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#fef3c7; color:#d97706;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Hard Drive Data Recovery</div>
+                    <div class="dropdown-item-desc">Sector-by-sector photo & tax file rescue from dead drives.</div>
+                  </div>
+                </a>
+
+                <a href="#services" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#eafaf1; color:#15803d;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Fast NVMe SSD Upgrades</div>
+                    <div class="dropdown-item-desc">Clone existing system bit-for-bit. Boots in 6 seconds.</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer-bar">
+                <span>⚡ Same-Day Mobile Dispatch Across Greater Brisbane</span>
+                <a href="#contact">Book On-Site Tech →</a>
+              </div>
+            </div>
+          </li>
+
+          <!-- Dropdown 2: Pricing & Rates -->
+          <li class="nav-dropdown-item">
+            <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+              <span>Pricing & Rates</span>
+              <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu" style="min-width: 370px;">
+              <div class="dropdown-menu-list">
+                <a href="#estimator" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#edf5ff; color:#0071e3;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Interactive Repair Estimator <span class="dropdown-tag tag-green">Instant</span></div>
+                    <div class="dropdown-item-desc">Select device & issue for a real-time quote.</div>
+                  </div>
+                </a>
+
+                <a href="#pricing" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#eafaf1; color:#15803d;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8m4-10v2m0 8v2"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Fixed $150–$170 Service Fee</div>
+                    <div class="dropdown-item-desc">No call-out fee and zero ticking clock hourly anxiety.</div>
+                  </div>
+                </a>
+
+                <a href="#pricing" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#f8fafc; color:#475569;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">2026 Price Comparison Guide</div>
+                    <div class="dropdown-item-desc">Flat rate vs traditional $120–$190/hr tech billing.</div>
+                  </div>
+                </a>
+
+                <a href="#pricing" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#fef3c7; color:#b45309;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">0% Markup Parts Policy</div>
+                    <div class="dropdown-item-desc">Replacement hardware supplied at transparent retail costs.</div>
+                  </div>
+                </a>
+              </div>
+              <div class="dropdown-footer-bar">
+                <span>🛡️ 90-Day Parts & Labor Guarantee Included</span>
+              </div>
+            </div>
+          </li>
+
+          <!-- Direct Link 3: Reviews -->
+          <li>
+            <a href="#reviews" class="nav-direct-pill">
+              <span>Reviews</span>
+              <span class="nav-star-pill">4.9 ★</span>
+            </a>
+          </li>
+
+          <!-- Dropdown 4: Trust & Coverage -->
+          <li class="nav-dropdown-item">
+            <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+              <span>Trust & Coverage</span>
+              <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="nav-dropdown-menu" role="menu" style="min-width: 370px;">
+              <div class="dropdown-menu-list">
+                <a href="#technician" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#dcfce7; color:#15803d;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Lead Technician Profile (E-E-A-T)</div>
+                    <div class="dropdown-item-desc">Meet Ike: 15+ years hands-on experience, ABN registered.</div>
+                  </div>
+                </a>
+
+                <a href="#service-area" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#edf5ff; color:#0071e3;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Western Suburbs & Inner City</div>
+                    <div class="dropdown-item-desc">Indooroopilly, Toowong, St Lucia, Ashgrove & metro-wide.</div>
+                  </div>
+                </a>
+
+                <a href="#faq" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#f1f5f9; color:#475569;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Frequently Asked Questions</div>
+                    <div class="dropdown-item-desc">Answers on travel, warranties, data privacy & bank reports.</div>
+                  </div>
+                </a>
+
+                <a href="https://g.page/computer-geek" target="_blank" rel="noopener noreferrer" class="dropdown-link-card" role="menuitem">
+                  <div class="dropdown-icon-bubble" style="background:#fef3c7; color:#d97706;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  </div>
+                  <div class="dropdown-item-content">
+                    <div class="dropdown-item-title">Google Business Profile (g.page) ↗</div>
+                    <div class="dropdown-item-desc">Check live reviews & verify our Indooroopilly base.</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </li>
         </ul>
       </nav>
 
@@ -2847,6 +3205,16 @@
           });
         });
       }
+
+      // Dropdown link click auto-close
+      var dropdownLinks = document.querySelectorAll('.nav-dropdown-menu a');
+      dropdownLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (document.activeElement && typeof document.activeElement.blur === 'function') {
+            document.activeElement.blur();
+          }
+        });
+      });
     })();
   </script>
 </body>
