@@ -1,0 +1,208 @@
+.wrapper {
+  padding-bottom: 6rem;
+}
+
+/* Hero */
+.hero {
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.heroLogoWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.heroLogo {
+  border-radius: 50%;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border: 4px solid #ffffff;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  color: var(--accents-6);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Main Board */
+.boardSection {
+  padding: 2rem 0;
+}
+
+.boardContainer {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3rem;
+  border: 1px solid var(--accents-2);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+}
+
+.boardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--accents-2);
+}
+
+.boardHeaderTitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconBoxPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: var(--brand-bg);
+  color: var(--brand);
+  border-radius: 12px;
+}
+
+.iconBoxPrimary svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.boardHeader h2 {
+  font-size: 1.75rem;
+  color: var(--foreground);
+}
+
+.linkArrow {
+  color: var(--accents-6);
+  font-weight: 500;
+}
+
+.linkArrow:hover {
+  color: var(--brand);
+}
+
+/* Bento Grid Inside Board */
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.bentoCard {
+  background: var(--accents-1);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid transparent;
+  transition: all var(--transition);
+}
+
+.bentoCard:hover {
+  background: #ffffff;
+  border-color: var(--accents-3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+}
+
+.cardHeader h3 {
+  font-size: 1.25rem;
+  margin-right: auto;
+}
+
+.cardLink {
+  color: var(--accents-5);
+  font-size: 1.25rem;
+}
+
+.bentoCard:hover .cardLink {
+  color: var(--brand);
+}
+
+.pillContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cardLarge {
+  grid-row: span 2;
+}
+
+.cardWide {
+  grid-column: span 2;
+}
+
+/* Features */
+.featuresSection {
+  padding: 6rem 0;
+}
+
+.sectionTitleCenter {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.featureBox {
+  text-align: center;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  border: 1px solid var(--accents-2);
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.featureBox h4 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureBox p {
+  color: var(--accents-6);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .boardContainer {
+    padding: 1.5rem;
+  }
+  .bentoGrid, .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+  .cardWide {
+    grid-column: span 1;
+  }
+}
