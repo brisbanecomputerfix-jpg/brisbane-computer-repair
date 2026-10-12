@@ -13,6 +13,15 @@
   <meta property="og:url" content="https://macbookscreen.com.au/">
   <meta name="theme-color" content="#f5f5f7">
 
+  <!-- Favicon & Social Cards -->
+  <link rel="icon" type="image/svg+xml" href="https://brisbanecomputerrepair.au/favicon.svg">
+  <link rel="apple-touch-icon" href="https://brisbanecomputerrepair.au/logo.svg">
+  <meta property="og:image" content="https://brisbanecomputerrepair.au/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MacBook Screen Replacement Brisbane — Apple Retina Display Specialists">
+  <meta name="twitter:description" content="Mobile Apple Mac screen replacements across Brisbane inner city and west side. True Tone calibrated displays, flat $150 labor, no call-out fee.">
+  <meta name="twitter:image" content="https://brisbanecomputerrepair.au/og-image.svg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,13 +29,23 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ComputerRepairOrg",
+    "@type": ["ComputerRepairService", "LocalBusiness"],
     "name": "MacBook Screen Replacement Brisbane",
     "legalName": "Computer Repair 1",
     "taxID": "98 288 669 674",
     "url": "https://macbookscreen.com.au/",
     "telephone": "+61468991300",
     "priceRange": "$150-$170",
+        "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -27.4698,
+      "longitude": 153.0251
+    },
+    "parentOrganization": {
+      "@type": "LocalBusiness",
+      "name": "Brisbane Computer Repair",
+      "url": "https://brisbanecomputerrepair.au/"
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Brisbane",
@@ -104,6 +123,16 @@
       border-radius: 999px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; z-index: 200;
     }
     @media (min-width: 900px) { .dock-bar { display: none; } }
+    .btn-whatsapp { background: #25d366; color: #fff; }
+    .btn-whatsapp:hover { background: #20ba5a; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -124,8 +153,9 @@
         Cracked glass, black display, horizontal purple lines, or flexgate stage light issues? We replace Retina display assemblies on-site across Greater Brisbane with flat $150 labor and transparent wholesale parts pricing.
       </p>
       <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 30px;">
-        <a href="tel:+61468991300" class="btn btn-green">Call 0468 991 300 for Instant Quote</a>
-        <a href="sms:+61468991300?body=Hi%20Ike%2C%20I%20need%20a%20MacBook%20screen%20quote" class="btn btn-blue">SMS Serial Number</a>
+        <a href="tel:+61468991300" class="btn btn-green">Call 0468 991 300</a>
+        <a href="https://wa.me/61468991300?text=Hi%20Ike%2C%20I%20need%20a%20MacBook%20screen%20quote" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp Serial # 💬</a>
+        <a href="https://brisbanecomputerrepair.au/#estimator" class="btn btn-blue">Price Estimator ↗</a>
       </div>
     </section>
 
@@ -160,7 +190,7 @@
         <li>✓ <strong>Mobile & On-Site:</strong> No booking an appointment 5 days in advance. We visit your home or office anywhere across Brisbane.</li>
       </ul>
       <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--slate);">
-        Part of the Greater Brisbane tech network operated by <a href="https://brisbanecomputerrepair.au/" style="color: var(--apple-blue); font-weight: 700;">Brisbane Computer Repair</a> (Computer Repair 1, ABN: 98 288 669 674).
+        Part of the Greater Brisbane tech network operated by <a href="https://brisbanecomputerrepair.au/" style="color: var(--apple-blue); font-weight: 700;">Brisbane Computer Repair</a>. Check estimated costs with our <a href="https://brisbanecomputerrepair.au/#estimator" style="color: var(--apple-blue); font-weight: 700;">Online Estimator</a> or <a href="https://brisbanecomputerrepair.au/#contact" style="color: var(--apple-blue); font-weight: 700;">Book a Visit</a> (Computer Repair 1, ABN: 98 288 669 674).
       </div>
     </section>
   </main>
@@ -169,8 +199,11 @@
     <a href="tel:+61468991300" class="btn btn-green" style="flex: 1; padding: 10px 14px; font-size: 14.5px; min-height: 42px;">
       Call 0468 991 300
     </a>
-    <a href="sms:+61468991300?body=Hi%20Ike%2C%20I%20need%20a%20MacBook%20screen%20quote" style="color: #fff; font-size: 13.5px; font-weight: 700; padding: 0 16px;">
-      SMS Model #
+    <a href="https://wa.me/61468991300?text=Hi%20Ike%2C%20I%20need%20a%20MacBook%20screen%20quote" style="color: #25d366; font-size: 13.5px; font-weight: 700; padding: 0 12px;">
+      WhatsApp
+    </a>
+    <a href="sms:+61468991300?body=Hi%20Ike%2C%20I%20need%20a%20MacBook%20screen%20quote" style="color: #fff; font-size: 13.5px; font-weight: 700; padding: 0 12px;">
+      SMS
     </a>
   </aside>
 </body>
