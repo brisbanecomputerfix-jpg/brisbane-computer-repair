@@ -1,0 +1,51 @@
+{
+  "name": "Brisbane Computer Repair",
+  "short_name": "Brisbane PC",
+  "description": "Mobile PC & Mac repairs across Greater Brisbane. Flat $150–$170 fee, zero call-out fee.",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1523",
+  "theme_color": "#0b1523",
+  "lang": "en-AU",
+  "categories": ["business", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Call Technician (0468 991 300)",
+      "short_name": "Call Ike",
+      "description": "Direct telephone line to lead technician Ike",
+      "url": "tel:+61468991300",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Book Repair On-Site",
+      "short_name": "Book Online",
+      "description": "Fast booking request for in-home computer repairs",
+      "url": "/#contact",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Cost Estimator",
+      "short_name": "Estimator",
+      "description": "Instant repair cost calculator",
+      "url": "/#estimator",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ]
+}

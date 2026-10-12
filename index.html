@@ -30,8 +30,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- Favicon -->
+  <!-- Favicon & PWA App Manifest -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="logo.svg">
+  <link rel="manifest" href="site.webmanifest">
 
   <!-- Apple SF / Plus Jakarta Sans Typography with High-Speed Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2233,6 +2235,17 @@
         display: none !important;
       }
     }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .repair-cursor-pointer, .repair-cursor-hud {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -4073,7 +4086,7 @@
       // ======================================================================
       // Experimental Precision Repair Diagnostic Cursor Script
       // ======================================================================
-      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         var pointer = document.getElementById('repairCursorPointer');
         var hud = document.getElementById('repairCursorHud');
         var badge = document.getElementById('repairCursorBadge');
