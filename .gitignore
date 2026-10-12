@@ -11,3 +11,6 @@ Thumbs.db
 # Build outputs
 dist/
 build/
+
+# Local Scratch
+scratch/

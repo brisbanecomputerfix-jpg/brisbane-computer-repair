@@ -16,7 +16,16 @@
   <meta property="og:title" content="Brisbane Computer Repair — Apple-Grade In-Home Tech Support">
   <meta property="og:description" content="Mobile PC & Mac repairs, data recovery, official bank clearance reports & laptop hardware bench in Brisbane. Flat $150–$170 fee, no call-out fee.">
   <meta property="og:url" content="https://brisbanecomputerrepair.au/">
-  <meta property="og:image" content="https://brisbanecomputerrepair.au/logo.svg">
+  <meta property="og:image" content="https://brisbanecomputerrepair.au/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Brisbane Computer Repair - Flat $150-$170 Service Fee with Zero Call-Out Fee">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brisbane Computer Repair — Apple-Grade In-Home Tech Support">
+  <meta name="twitter:description" content="Mobile PC & Mac repairs, data recovery, official bank clearance reports. Flat $150–$170 fee, zero call-out fee. Call 0468 991 300.">
+  <meta name="twitter:image" content="https://brisbanecomputerrepair.au/og-image.svg">
   <meta name="theme-color" content="#0b1523">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -35,18 +44,32 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ComputerRepairOrg",
+        "@type": ["ComputerRepairService", "LocalBusiness"],
         "@id": "https://brisbanecomputerrepair.au/#organization",
         "name": "Brisbane Computer Repair",
         "legalName": "Computer Repair 1",
         "taxID": "98 288 669 674",
         "url": "https://brisbanecomputerrepair.au/",
         "logo": "https://brisbanecomputerrepair.au/logo.svg",
+        "image": "https://brisbanecomputerrepair.au/og-image.svg",
         "telephone": "+61468991300",
         "email": "ike@brisbanecomputerrepair.au",
         "priceRange": "$150-$170",
         "paymentAccepted": "Cash, Credit Card, Bank Transfer",
         "currenciesAccepted": "AUD",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Greater Brisbane Metro Service Area",
+          "addressLocality": "Brisbane",
+          "addressRegion": "QLD",
+          "postalCode": "4000",
+          "addressCountry": "AU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -27.4698,
+          "longitude": 153.0251
+        },
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -76,6 +99,42 @@
           "https://computerrepairnewfarm.com.au/",
           "https://computerrepairnewfarm.com.au/blog"
         ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Computer Repair Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Fixed In-Home Computer & Laptop Repair",
+                "description": "Comprehensive hardware diagnostics, boot failure recovery, malware clean, operating system restore with zero call-out fee."
+              },
+              "price": "150.00",
+              "priceCurrency": "AUD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Official Bank Fraud & Scam Clearance Certificate",
+                "description": "Forensic remote tool purge (AnyDesk, TeamViewer), malware deep-scrub, and official signed compliance certificate for bank fraud clearance."
+              },
+              "price": "150.00",
+              "priceCurrency": "AUD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "MacBook & Windows Laptop Screen Replacement",
+                "description": "Precision on-site Retina and FHD screen replacement with 0% markup on replacement display panels."
+              },
+              "price": "150.00",
+              "priceCurrency": "AUD"
+            }
+          ]
+        },
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",

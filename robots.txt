@@ -1,0 +1,22 @@
+# robots.txt for Brisbane Computer Repair (https://brisbanecomputerrepair.au/)
+User-agent: *
+Allow: /
+Disallow: /scratch/
+Disallow: /redirects/
+
+# Search Engine Crawl Optimization
+User-agent: Googlebot
+Allow: /
+Allow: /*.svg$
+Allow: /*.css$
+Allow: /*.js$
+
+User-agent: Bingbot
+Allow: /
+Allow: /*.svg$
+Allow: /*.css$
+Allow: /*.js$
+
+# Host declaration & XML Sitemap
+Host: https://brisbanecomputerrepair.au
+Sitemap: https://brisbanecomputerrepair.au/sitemap.xml
