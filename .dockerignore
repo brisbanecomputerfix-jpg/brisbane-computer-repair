@@ -1,0 +1,13 @@
+# Version control & internal tools
+.git
+.gitignore
+scratch/
+redirects/
+README.md
+
+# Logs & temp files
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
