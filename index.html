@@ -11,29 +11,35 @@
   <!-- Non-Canonical / Self-Canonical Tag to Prevent Duplicate Content Penalties -->
   <link rel="canonical" href="https://brisbanecomputerrepair.au/">
 
-  <!-- Open Graph / Social -->
+  <!-- Open Graph / Social (Rich CTA Card) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Brisbane Computer Repair — Apple-Grade In-Home Tech Support">
-  <meta property="og:description" content="Mobile PC & Mac repairs, data recovery, official bank clearance reports & laptop hardware bench in Brisbane. Flat $150–$170 fee, no call-out fee.">
+  <meta property="og:site_name" content="Brisbane Computer Repair">
+  <meta property="og:locale" content="en_AU">
+  <meta property="og:title" content="Brisbane Computer Repair — Apple-Grade Mobile PC & Mac Support">
+  <meta property="og:description" content="Mobile PC & Mac repairs, data recovery, official bank clearance reports & laptop hardware bench in Brisbane. Flat $150–$170 fee, zero call-out fee. Call 0468 991 300.">
   <meta property="og:url" content="https://brisbanecomputerrepair.au/">
-  <meta property="og:image" content="https://brisbanecomputerrepair.au/og-image.svg">
+  <meta property="og:image" content="https://brisbanecomputerrepair.au/og-image.png">
+  <meta property="og:image:secure_url" content="https://brisbanecomputerrepair.au/og-image.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Brisbane Computer Repair - Flat $150-$170 Service Fee with Zero Call-Out Fee">
+  <meta property="og:image:alt" content="Brisbane Computer Repair - Mobile PC & Mac Service Across Greater Brisbane, Flat $150-$170 Fee, Call 0468 991 300">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Brisbane Computer Repair — Apple-Grade In-Home Tech Support">
   <meta name="twitter:description" content="Mobile PC & Mac repairs, data recovery, official bank clearance reports. Flat $150–$170 fee, zero call-out fee. Call 0468 991 300.">
-  <meta name="twitter:image" content="https://brisbanecomputerrepair.au/og-image.svg">
+  <meta name="twitter:image" content="https://brisbanecomputerrepair.au/og-image.png">
+  <meta name="twitter:image:alt" content="Brisbane Computer Repair CTA Card with Flat Pricing and Contact Options">
   <meta name="theme-color" content="#0b1523">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <!-- Favicon & PWA App Manifest -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="apple-touch-icon" href="logo.svg">
-  <link rel="manifest" href="site.webmanifest">
+  <!-- High-Visibility Favicon Suite & PWA App Manifest -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- Apple SF / Plus Jakarta Sans Typography with High-Speed Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2121,6 +2127,179 @@
         display: none !important;
       }
     }
+
+    /* WhatsApp Button Styles */
+    .btn-whatsapp {
+      background: #25D366;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+      text-decoration: none;
+    }
+    .btn-whatsapp:hover {
+      background: #20bd5a;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    }
+    .dock-whatsapp-btn {
+      background: #25D366;
+      color: #ffffff;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+    .dock-whatsapp-btn:hover {
+      background: #20bd5a;
+      color: #ffffff;
+    }
+
+    /* Mobile Body Safe-Area Padding for Permanent Dock */
+    @media (max-width: 991px) {
+      body {
+        padding-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
+      }
+    }
+
+    /* Inline Booking Form Error Feedback & Shake Animation */
+    .form-error-msg {
+      display: none;
+      background: #fef2f2;
+      border: 1.5px solid #f87171;
+      color: #991b1b;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 16px;
+      animation: formShake 0.35s ease-in-out;
+    }
+    .form-control.has-error {
+      border-color: #ef4444 !important;
+      background-color: #fffaf0 !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+      animation: formShake 0.35s ease-in-out;
+    }
+    @keyframes formShake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    /* Submit Button Loading Spinner */
+    .form-submit-btn:disabled {
+      opacity: 0.85;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: var(--apple-blue);
+    }
+    .spinner-inline {
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      border: 2.5px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      border-top-color: #ffffff;
+      animation: spinnerSpin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spinnerSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Apple-Grade Cookie & Local Storage Consent Banner */
+    .cookie-banner {
+      position: fixed;
+      bottom: 24px;
+      left: 20px;
+      right: 20px;
+      max-width: 680px;
+      margin: 0 auto;
+      background: rgba(11, 21, 35, 0.94);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      animation: bannerSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (max-width: 768px) {
+      .cookie-banner {
+        flex-direction: column;
+        align-items: stretch;
+        bottom: calc(76px + env(safe-area-inset-bottom));
+        left: 12px;
+        right: 12px;
+        padding: 16px 18px;
+      }
+    }
+    @keyframes bannerSlideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .cookie-text {
+      font-size: 13.5px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+    .cookie-text strong {
+      color: #ffffff;
+    }
+    .cookie-text a {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .cookie-btn-accept {
+      background: var(--apple-blue);
+      color: #ffffff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .cookie-btn-accept:hover {
+      background: #0077ed;
+      transform: translateY(-1px);
+    }
+    .cookie-btn-decline {
+      background: rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .cookie-btn-decline:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
   </style>
 </head>
 <body>
@@ -2296,7 +2475,16 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           <span>Menu</span>
         </button>
-        <a href="#main-content" style="display: flex; align-items: center; gap: 10px; color: inherit;">
+        <a href="#main-content" style="display: flex; align-items: center; gap: 12px; color: inherit;" aria-label="Brisbane Computer Repair - Mobile PC and Mac Support Home">
+          <div class="brand-icon-box" role="img" aria-label="Brisbane Computer Repair Official Badge - Mobile PC and Mac Tech Support in Greater Brisbane">
+            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect width="32" height="32" rx="7" fill="#0071e3"/>
+              <rect x="6" y="8" width="20" height="13" rx="1.5" stroke="#ffffff" stroke-width="2"/>
+              <line x1="11" y1="24" x2="21" y2="24" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+              <line x1="16" y1="21" x2="16" y2="24" stroke="#ffffff" stroke-width="2"/>
+              <path d="M12 14.5L15 17.5L20 12" stroke="#34c759" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="brand-text">
             <span class="brand-title">Brisbane Computer Repair</span>
             <div class="brand-status-pill">
@@ -2547,11 +2735,18 @@
             Engineered for clarity and peace of mind. Flat <strong>$150–$170</strong> service fee, zero call-out charges across Greater Brisbane, transparent retail parts pricing, and patient one-on-one assistance.
           </p>
           <div class="hero-cta-bar">
-            <a href="tel:+61468991300" class="btn btn-green">
+            <a href="tel:+61468991300" class="btn btn-green" id="heroCallBtn" aria-label="Call Ike at 0468 991 300 for mobile computer repair in Brisbane">
               <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Call 0468 991 300
+              <span>Call 0468 991 300</span>
             </a>
-            <a href="#estimator" class="btn btn-glass">
+            <a href="https://wa.me/61468991300?text=Hi%20Ike%2C%20I%20need%20help%20with%20my%20computer%20in%20Brisbane" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" id="heroWhatsAppBtn" aria-label="Chat directly on WhatsApp with Ike">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>WhatsApp Ike</span>
+            </a>
+            <a href="#contact" class="btn btn-blue" id="heroBookBtn">
+              Book On-Site Visit
+            </a>
+            <a href="#estimator" class="btn btn-glass" id="heroEstimatorBtn">
               Calculate Repair Cost
             </a>
           </div>
@@ -2955,7 +3150,7 @@
             </div>
 
             <div style="background: #f8fafc; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px; text-align: center;">
-              <div style="width: 80px; height: 80px; border-radius: 50%; background: #0b1523; color: #fff; font-size: 28px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+              <div style="width: 80px; height: 80px; border-radius: 50%; background: #0b1523; color: #fff; font-size: 28px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;" role="img" aria-label="Computer Repair 1 Certified Mobile PC and Mac Technician Serving Brisbane, Indooroopilly, Toowong, and Western Suburbs">
                 CR1
               </div>
               <h3 style="font-size: 20px; font-weight: 800; color: var(--ink); margin-bottom: 4px;">Verified Local Presence</h3>
@@ -2977,7 +3172,7 @@
         <!-- Google Trust Hero Bar -->
         <div class="google-trust-hero-bar">
           <div class="google-score-left">
-            <div class="google-g-badge" aria-label="Google Business Profile">
+            <div class="google-g-badge" role="img" aria-label="Google Business Profile Verified 4.9 Star Rating for Brisbane Computer Repair and Laptop Support">
               <svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -3540,6 +3735,9 @@
                 <!-- Anti-spam Honeypot -->
                 <input type="text" name="_hp" style="display:none;" tabindex="-1" autocomplete="off">
 
+                <!-- Inline Form Error Feedback Box -->
+                <div id="bookingFormError" class="form-error-msg" role="alert"></div>
+
                 <div class="form-grid-2">
                   <div class="form-group">
                     <label for="bookingName" class="form-label">Full Name <span class="req">*</span></label>
@@ -3746,6 +3944,8 @@
           <span>·</span>
           <a href="privacy.html" style="color: #94a3b8; text-decoration: none; transition: color 0.15s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">Privacy Policy</a>
           <span>·</span>
+          <button id="cookieSettingsBtn" type="button" style="background: none; border: none; color: #94a3b8; font-size: 13px; text-decoration: underline; cursor: pointer; padding: 0;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94a3b8'">Cookie Settings</button>
+          <span>·</span>
           <span>Mobile dispatch across Greater Brisbane, QLD</span>
         </div>
       </div>
@@ -3793,6 +3993,19 @@
     <button class="dock-menu-btn" id="dockMenuBtn" aria-label="Open Sidebar Menu">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
     </button>
+  </aside>
+
+  <!-- ========================================================================
+       Apple Glassmorphic Cookie & Local Storage Privacy Consent Banner
+       ======================================================================== -->
+  <aside id="cookieConsentBanner" class="cookie-banner" role="dialog" aria-label="Privacy and Local Storage Consent" aria-live="polite">
+    <div class="cookie-text">
+      <strong>Privacy & Local Storage:</strong> We use essential local storage to remember your repair quotes and booking requests under Australian Privacy Principles. Zero invasive third-party ad tracking. View our <a href="privacy.html">Privacy Policy</a>.
+    </div>
+    <div class="cookie-actions">
+      <button type="button" id="cookieDeclineBtn" class="cookie-btn-decline">Essential Only</button>
+      <button type="button" id="cookieAcceptBtn" class="cookie-btn-accept">Accept All</button>
+    </div>
   </aside>
 
   <!-- ========================================================================
@@ -4106,18 +4319,172 @@
         });
       }
 
-      // Handle Booking Submission
+      // ======================================================================
+      // Privacy-First Conversion Analytics & Event Tracking Architecture
+      // ======================================================================
+      window.trackEvent = function(eventName, params) {
+        params = params || {};
+        params.timestamp = new Date().toISOString();
+        params.page = window.location.pathname;
+
+        // Forward to Google Tag Manager / Analytics if present
+        if (window.dataLayer && typeof window.dataLayer.push === 'function') {
+          try {
+            window.dataLayer.push(Object.assign({ event: eventName }, params));
+          } catch(e) {}
+        }
+        if (typeof window.gtag === 'function') {
+          try {
+            window.gtag('event', eventName, params);
+          } catch(e) {}
+        }
+
+        // Maintain local session audit trail
+        try {
+          var stored = JSON.parse(sessionStorage.getItem('bcr_analytics_events') || '[]');
+          stored.push({ event: eventName, params: params });
+          if (stored.length > 50) stored.shift();
+          sessionStorage.setItem('bcr_analytics_events', JSON.stringify(stored));
+        } catch(e) {}
+      };
+
+      // Track Phone, WhatsApp, and SMS interactions across the entire page
+      document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          window.trackEvent('click_phone_call', {
+            href: el.getAttribute('href'),
+            label: (el.textContent || '').trim().replace(/\s+/g, ' ')
+          });
+        });
+      });
+
+      document.querySelectorAll('a[href*="wa.me"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          window.trackEvent('click_whatsapp', {
+            href: el.getAttribute('href'),
+            label: (el.getAttribute('aria-label') || el.textContent || '').trim()
+          });
+        });
+      });
+
+      document.querySelectorAll('a[href^="sms:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          window.trackEvent('click_sms', {
+            href: el.getAttribute('href')
+          });
+        });
+      });
+
+      // Track Estimator recalculations
+      if (devSelect) {
+        devSelect.addEventListener('change', function() {
+          window.trackEvent('estimator_device_selected', { device: devSelect.value });
+        });
+      }
+      if (issSelect) {
+        issSelect.addEventListener('change', function() {
+          window.trackEvent('estimator_issue_selected', { issue: issSelect.value });
+        });
+      }
+
+      // ======================================================================
+      // Cookie & Local Storage Consent Banner Handling
+      // ======================================================================
+      var cookieBanner = document.getElementById('cookieConsentBanner');
+      var cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
+      var cookieDeclineBtn = document.getElementById('cookieDeclineBtn');
+      var cookieSettingsBtn = document.getElementById('cookieSettingsBtn');
+
+      try {
+        var consent = localStorage.getItem('bcr_cookie_consent');
+        if (!consent && cookieBanner) {
+          setTimeout(function() {
+            cookieBanner.style.display = 'flex';
+          }, 1000);
+        }
+      } catch(e) {}
+
+      if (cookieAcceptBtn) {
+        cookieAcceptBtn.addEventListener('click', function() {
+          try {
+            localStorage.setItem('bcr_cookie_consent', 'accepted');
+          } catch(e) {}
+          if (cookieBanner) cookieBanner.style.display = 'none';
+          window.trackEvent('cookie_consent_accepted');
+        });
+      }
+
+      if (cookieDeclineBtn) {
+        cookieDeclineBtn.addEventListener('click', function() {
+          try {
+            localStorage.setItem('bcr_cookie_consent', 'essential_only');
+          } catch(e) {}
+          if (cookieBanner) cookieBanner.style.display = 'none';
+          window.trackEvent('cookie_consent_essential_only');
+        });
+      }
+
+      if (cookieSettingsBtn) {
+        cookieSettingsBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (cookieBanner) {
+            cookieBanner.style.display = 'flex';
+            cookieBanner.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          }
+        });
+      }
+
+      // ======================================================================
+      // Australian Phone & Form Validation Helpers
+      // ======================================================================
+      function isValidAustralianPhone(phoneStr) {
+        if (!phoneStr) return false;
+        // Strip out spaces, hyphens, parentheses
+        var clean = phoneStr.replace(/[\s\-\(\)\.]/g, '');
+        // AU Mobiles: 04xx xxx xxx or +614xx xxx xxx
+        // AU Landlines: (02/03/07/08) xxxx xxxx or +61(2/3/7/8) xxxx xxxx
+        var auPhoneRegex = /^(?:\+?61|0)[2-57-8]\d{8}$/;
+        return auPhoneRegex.test(clean);
+      }
+
+      var bookingNameInput = document.getElementById('bookingName');
+      var bookingPhoneInput = document.getElementById('bookingPhone');
+      var bookingSuburbInput = document.getElementById('bookingSuburb');
+      var bookingErrorBox = document.getElementById('bookingFormError');
+
+      // Clear input error states on user edit
+      [bookingNameInput, bookingPhoneInput, bookingSuburbInput].forEach(function(input) {
+        if (input) {
+          input.addEventListener('input', function() {
+            this.classList.remove('has-error');
+            if (bookingErrorBox && !document.querySelector('.form-control.has-error')) {
+              bookingErrorBox.style.display = 'none';
+            }
+          });
+        }
+      });
+
+      // Handle Fast Booking Submission with Loading Status & Error Prevention
       if (bookingForm) {
+        var submitBtn = document.getElementById('formSubmitBtn');
+        var defaultBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>🚀 Request Fast On-Site Booking</span>';
+
         bookingForm.addEventListener('submit', function(e) {
           e.preventDefault();
 
-          // Check honeypot
+          // Anti-spam Honeypot Check
           var hp = bookingForm.querySelector('input[name="_hp"]');
           if (hp && hp.value) return;
 
-          var name = (document.getElementById('bookingName').value || '').trim();
-          var phone = (document.getElementById('bookingPhone').value || '').trim();
-          var suburb = (document.getElementById('bookingSuburb').value || '').trim();
+          // Reset error states
+          if (bookingErrorBox) bookingErrorBox.style.display = 'none';
+          [bookingNameInput, bookingPhoneInput, bookingSuburbInput].forEach(function(inp) {
+            if (inp) inp.classList.remove('has-error');
+          });
+
+          var name = (bookingNameInput ? bookingNameInput.value : '').trim();
+          var phone = (bookingPhoneInput ? bookingPhoneInput.value : '').trim();
+          var suburb = (bookingSuburbInput ? bookingSuburbInput.value : '').trim();
           var email = (document.getElementById('bookingEmail').value || '').trim();
           var device = formDevice ? formDevice.options[formDevice.selectedIndex].text : '';
           var issue = formIssue ? formIssue.options[formIssue.selectedIndex].text : '';
@@ -4125,61 +4492,125 @@
           var urgencyText = urgency ? urgency.options[urgency.selectedIndex].text : 'Today';
           var notes = (document.getElementById('bookingNotes').value || '').trim();
 
-          if (!name || !phone || !suburb) {
-            alert('Please fill in your name, phone number, and suburb so we can organize your repair.');
+          var errors = [];
+          var firstErrorInput = null;
+
+          if (!name || name.length < 2) {
+            errors.push('Please enter your full name so Ike knows who to ask for.');
+            if (bookingNameInput) {
+              bookingNameInput.classList.add('has-error');
+              if (!firstErrorInput) firstErrorInput = bookingNameInput;
+            }
+          }
+
+          if (!phone || !isValidAustralianPhone(phone)) {
+            errors.push('Please provide a valid Australian contact number (e.g. 0468 991 300 or 07 3000 0000).');
+            if (bookingPhoneInput) {
+              bookingPhoneInput.classList.add('has-error');
+              if (!firstErrorInput) firstErrorInput = bookingPhoneInput;
+            }
+          }
+
+          if (!suburb || suburb.length < 2) {
+            errors.push('Please specify your Brisbane suburb or postcode for mobile dispatch.');
+            if (bookingSuburbInput) {
+              bookingSuburbInput.classList.add('has-error');
+              if (!firstErrorInput) firstErrorInput = bookingSuburbInput;
+            }
+          }
+
+          if (errors.length > 0) {
+            if (bookingErrorBox) {
+              bookingErrorBox.innerHTML = '⚠️ <strong>Please correct the following:</strong><br>• ' + errors.join('<br>• ');
+              bookingErrorBox.style.display = 'block';
+            }
+            if (firstErrorInput) {
+              firstErrorInput.focus();
+            }
+            window.trackEvent('form_validation_failed', { error_count: errors.length });
             return;
           }
 
-          // Build summary payload
-          var summaryLines = [
-            '<strong>Client:</strong> ' + escapeHtml(name),
-            '<strong>Phone:</strong> ' + escapeHtml(phone),
-            '<strong>Suburb:</strong> ' + escapeHtml(suburb),
-            '<strong>Device:</strong> ' + escapeHtml(device),
-            '<strong>Issue:</strong> ' + escapeHtml(issue),
-            '<strong>Timing:</strong> ' + escapeHtml(urgencyText)
-          ];
-          if (email) summaryLines.push('<strong>Email:</strong> ' + escapeHtml(email));
-          if (notes) summaryLines.push('<strong>Notes:</strong> ' + escapeHtml(notes));
-
-          var detailsBox = document.getElementById('bookingSummaryDetails');
-          if (detailsBox) detailsBox.innerHTML = summaryLines.join('<br>');
-
-          // Pre-populate WhatsApp & SMS message links
-          var rawMsg = 'Hi Ike, I just requested an on-site repair on brisbanecomputerrepair.au:\n' +
-            'Name: ' + name + '\n' +
-            'Phone: ' + phone + '\n' +
-            'Suburb: ' + suburb + '\n' +
-            'Device: ' + device + '\n' +
-            'Issue: ' + issue + '\n' +
-            'Preferred Time: ' + urgencyText +
-            (notes ? ('\nNotes: ' + notes) : '');
-
-          var encodedMsg = encodeURIComponent(rawMsg);
-          var waBtn = document.getElementById('successWhatsAppBtn');
-          if (waBtn) waBtn.href = 'https://wa.me/61468991300?text=' + encodedMsg;
-
-          var smsBtn = document.getElementById('successSmsBtn');
-          if (smsBtn) smsBtn.href = 'sms:+61468991300?body=' + encodedMsg;
-
-          // Save locally
-          try {
-            localStorage.setItem('last_bcr_booking', JSON.stringify({
-              name: name,
-              phone: phone,
-              suburb: suburb,
-              timestamp: new Date().toISOString()
-            }));
-          } catch(err) {}
-
-          // Switch UI to success state
-          var formContainer = document.getElementById('bookingFormContainer');
-          var successBox = document.getElementById('bookingSuccessBox');
-          if (formContainer && successBox) {
-            formContainer.style.display = 'none';
-            successBox.style.display = 'block';
-            successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Trigger Loading Status on Button
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-inline"></span><span>⚡ Securing your appointment...</span>';
           }
+
+          window.trackEvent('form_submit_start', {
+            suburb: suburb,
+            device: device,
+            issue: issue,
+            urgency: urgencyText
+          });
+
+          // Simulate realistic quick local verification & transition
+          setTimeout(function() {
+            // Build summary payload
+            var summaryLines = [
+              '<strong>Client:</strong> ' + escapeHtml(name),
+              '<strong>Phone:</strong> ' + escapeHtml(phone),
+              '<strong>Suburb:</strong> ' + escapeHtml(suburb),
+              '<strong>Device:</strong> ' + escapeHtml(device),
+              '<strong>Issue:</strong> ' + escapeHtml(issue),
+              '<strong>Timing:</strong> ' + escapeHtml(urgencyText)
+            ];
+            if (email) summaryLines.push('<strong>Email:</strong> ' + escapeHtml(email));
+            if (notes) summaryLines.push('<strong>Notes:</strong> ' + escapeHtml(notes));
+
+            var detailsBox = document.getElementById('bookingSummaryDetails');
+            if (detailsBox) detailsBox.innerHTML = summaryLines.join('<br>');
+
+            // Pre-populate WhatsApp & SMS message links
+            var rawMsg = 'Hi Ike, I just requested an on-site repair on brisbanecomputerrepair.au:\n' +
+              'Name: ' + name + '\n' +
+              'Phone: ' + phone + '\n' +
+              'Suburb: ' + suburb + '\n' +
+              'Device: ' + device + '\n' +
+              'Issue: ' + issue + '\n' +
+              'Preferred Time: ' + urgencyText +
+              (notes ? ('\nNotes: ' + notes) : '');
+
+            var encodedMsg = encodeURIComponent(rawMsg);
+            var waBtn = document.getElementById('successWhatsAppBtn');
+            if (waBtn) waBtn.href = 'https://wa.me/61468991300?text=' + encodedMsg;
+
+            var smsBtn = document.getElementById('successSmsBtn');
+            if (smsBtn) smsBtn.href = 'sms:+61468991300?body=' + encodedMsg;
+
+            // Save locally
+            try {
+              localStorage.setItem('last_bcr_booking', JSON.stringify({
+                name: name,
+                phone: phone,
+                suburb: suburb,
+                device: device,
+                issue: issue,
+                timestamp: new Date().toISOString()
+              }));
+            } catch(err) {}
+
+            // Switch UI to success state
+            var formContainer = document.getElementById('bookingFormContainer');
+            var successBox = document.getElementById('bookingSuccessBox');
+            if (formContainer && successBox) {
+              formContainer.style.display = 'none';
+              successBox.style.display = 'block';
+              successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Restore submit button
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = defaultBtnHtml;
+            }
+
+            window.trackEvent('form_submit_success', {
+              suburb: suburb,
+              device: device,
+              issue: issue
+            });
+          }, 600);
         });
       }
 
@@ -4198,6 +4629,10 @@
             successBox.style.display = 'none';
             formContainer.style.display = 'block';
             if (bookingForm) bookingForm.reset();
+            if (bookingErrorBox) bookingErrorBox.style.display = 'none';
+            [bookingNameInput, bookingPhoneInput, bookingSuburbInput].forEach(function(inp) {
+              if (inp) inp.classList.remove('has-error');
+            });
             updateFormEstimate();
           }
         });

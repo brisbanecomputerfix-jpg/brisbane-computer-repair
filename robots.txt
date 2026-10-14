@@ -3,17 +3,20 @@ User-agent: *
 Allow: /
 Disallow: /scratch/
 Disallow: /redirects/
+Disallow: /404.html
 
 # Search Engine Crawl Optimization
 User-agent: Googlebot
 Allow: /
 Allow: /*.svg$
+Allow: /*.png$
 Allow: /*.css$
 Allow: /*.js$
 
 User-agent: Bingbot
 Allow: /
 Allow: /*.svg$
+Allow: /*.png$
 Allow: /*.css$
 Allow: /*.js$
 
