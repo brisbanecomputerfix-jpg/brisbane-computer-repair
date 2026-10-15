@@ -1397,6 +1397,46 @@
       box-shadow: var(--shadow-glass);
       border-color: #cbd5e1;
     }
+    .service-card-media {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: #0b1523;
+      position: relative;
+      box-shadow: 0 4px 14px rgba(11, 21, 35, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .service-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-squircle-card:hover .service-card-media img {
+      transform: scale(1.04);
+    }
+    .service-media-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(11, 21, 35, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    }
     .service-icon-bubble {
       width: 48px;
       height: 48px;
@@ -3045,24 +3085,25 @@
 
           <!-- Cupertino Segmented Tab Filter -->
           <div class="segmented-control" role="tablist" aria-label="Service Filter Tabs">
-            <button class="segment-tab active" data-filter="all" role="tab" aria-selected="true">All Repairs</button>
-            <button class="segment-tab" data-filter="macbook" role="tab" aria-selected="false">MacBook & PC Screens</button>
-            <button class="segment-tab" data-filter="scam" role="tab" aria-selected="false">Bank Scam Defense</button>
-            <button class="segment-tab" data-filter="gaming" role="tab" aria-selected="false">Gaming PC Bench</button>
-            <button class="segment-tab" data-filter="hardware" role="tab" aria-selected="false">Hinges & BIOS</button>
+            <button class="segment-tab active" data-filter="all" role="tab" aria-selected="true">All Services</button>
+            <button class="segment-tab" data-filter="macbook" role="tab" aria-selected="false">Screens & Displays</button>
+            <button class="segment-tab" data-filter="scam" role="tab" aria-selected="false">Data & Scam Defense</button>
+            <button class="segment-tab" data-filter="gaming" role="tab" aria-selected="false">Custom PC & Fans</button>
+            <button class="segment-tab" data-filter="hardware" role="tab" aria-selected="false">Battery & Hardware</button>
           </div>
         </div>
 
         <div class="services-grid-box" id="servicesGrid">
           <!-- Card 1 -->
           <article class="service-squircle-card" data-category="macbook">
-            <div class="service-icon-bubble">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div class="service-card-media">
+              <img src="images/service-screen-repair.jpg" alt="Certified technician replacing cracked laptop LCD and MacBook Retina display on-site in Brisbane" width="960" height="536" loading="lazy" decoding="async">
+              <span class="service-media-badge">🖥️ Display Specialist</span>
             </div>
             <h3>MacBook & Laptop Screen Replacements</h3>
             <p>Cracked displays, flickering purple lines, or black boot screens. We replace Retina displays on Apple Silicon (A2338, A2442, M1/M2/M3) and Lenovo/Dell/HP laptops on-site.</p>
             <div class="service-tag-row">
-              <span class="micro-tag">Rank 9 in GSC</span>
+              <span class="micro-tag">Retina & OLED Panels</span>
               <span class="micro-tag">True Tone Calibrated</span>
             </div>
             <div class="service-bottom-meta">
@@ -3073,14 +3114,15 @@
 
           <!-- Card 2 -->
           <article class="service-squircle-card" data-category="all">
-            <div class="service-icon-bubble">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <div class="service-card-media">
+              <img src="images/service-data-recovery.jpg" alt="Forensic data recovery workbench rescuing files from clicking mechanical drive and failed NVMe SSD" width="960" height="536" loading="lazy" decoding="async">
+              <span class="service-media-badge">💾 Forensic Recovery</span>
             </div>
             <h3>Data Recovery from Dead & Clicking Drives</h3>
             <p>Photos, tax documents, and university coursework rescued from non-booting drives, corrupted USBs, and ticking mechanical HDDs before permanent platter degradation.</p>
             <div class="service-tag-row">
-              <span class="micro-tag">3,994 GSC Impressions</span>
-              <span class="micro-tag">Strict Privacy</span>
+              <span class="micro-tag">BitLocker Decryption</span>
+              <span class="micro-tag">Strict Privacy (APPs)</span>
             </div>
             <div class="service-bottom-meta">
               <span>Free Upfront Assessment</span>
@@ -3090,11 +3132,12 @@
 
           <!-- Card 3 -->
           <article class="service-squircle-card" data-category="scam">
-            <div class="service-icon-bubble">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="service-card-media">
+              <img src="images/service-security-check.jpg" alt="Mobile technician performing digital security audit and official bank scam clearance" width="960" height="536" loading="lazy" decoding="async">
+              <span class="service-media-badge">🛡️ Bank Certified</span>
             </div>
-            <h3>Scam Cleanup & Bank Clearance Certificates</h3>
-            <p>Did an unsolicited phone caller connect to your PC? We eliminate AnyDesk, TeamViewer, and spyware, issuing signed clearance reports required by Australian banks.</p>
+            <h3>Digital Security Check & Bank Clearance</h3>
+            <p>Did an unsolicited phone caller connect to your PC? We eliminate AnyDesk, TeamViewer, and spyware, issuing signed compliance clearance reports accepted by Australian banks.</p>
             <div class="service-tag-row">
               <span class="micro-tag">CBA / ANZ / NAB / Westpac</span>
               <span class="micro-tag">Forensic Purge</span>
@@ -3106,31 +3149,33 @@
           </article>
 
           <!-- Card 4 -->
-          <article class="service-squircle-card" data-category="all">
-            <div class="service-icon-bubble">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <article class="service-squircle-card" data-category="gaming">
+            <div class="service-card-media">
+              <img src="images/service-custom-pc.jpg" alt="Technician troubleshooting and tuning custom built gaming desktop PC on workbench" width="960" height="536" loading="lazy" decoding="async">
+              <span class="service-media-badge">⚡ Custom PC Bench</span>
             </div>
-            <h3>Patient Senior Tech Support & New Setup</h3>
-            <p>Friendly, respectful one-on-one computer help at your kitchen table. We set up new computers, connect printers, configure email, and teach at your pace with zero tech jargon.</p>
+            <h3>Custom Built Computer Repairs & Upgrades</h3>
+            <p>No-post boot failures, random BSOD crashes, GPU thermal throttling, and cable management overhauls. Component-level diagnostic testing on our dedicated custom PC bench.</p>
             <div class="service-tag-row">
-              <span class="micro-tag">Senior-Friendly</span>
-              <span class="micro-tag">Zero Jargon</span>
+              <span class="micro-tag">DDR5 & RTX Testing</span>
+              <span class="micro-tag">BIOS Flashing</span>
             </div>
             <div class="service-bottom-meta">
-              <span>From $150</span>
-              <span>No Pressure</span>
+              <span>Flat fee $150–$170</span>
+              <span>Stress-Tested</span>
             </div>
           </article>
 
           <!-- Card 5 -->
           <article class="service-squircle-card" id="gaming-bench" data-category="gaming">
-            <div class="service-icon-bubble">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4m7-2h.01m3 0h.01"/></svg>
+            <div class="service-card-media">
+              <img src="images/service-fan-replacement.jpg" alt="Gaming laptop cooling overhaul with copper heatpipe servicing and high-RPM fan replacement" width="960" height="536" loading="lazy" decoding="async">
+              <span class="service-media-badge">❄️ Thermal Servicing</span>
             </div>
-            <h3>Gaming Laptop Bench: MSI, Razer & ASUS ROG</h3>
-            <p>Ranked #3.7 on Google for gaming laptop repairs. We fix buzzing high-RPM fans, replace hazardous swollen Razer batteries, rebuild broken MSI hinges, and clean liquid spills.</p>
+            <h3>Gaming Laptop Fan Replacement & Thermals</h3>
+            <p>Ranked #3.7 on Google for gaming laptop repairs. We fix buzzing high-RPM fans, replace damaged vapor chambers, repaste with Arctic MX-6 compound, and clear HP 90B fan errors.</p>
             <div class="service-tag-row">
-              <span class="micro-tag">Rank 3.7 in GSC</span>
+              <span class="micro-tag">MSI / Razer / ASUS ROG</span>
               <span class="micro-tag">High-RPM Fans</span>
             </div>
             <div class="service-bottom-meta">
@@ -3141,18 +3186,19 @@
 
           <!-- Card 6 -->
           <article class="service-squircle-card" id="hardware-fixes" data-category="hardware">
-            <div class="service-icon-bubble">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <div class="service-card-media">
+              <img src="images/service-battery-replacement.jpg" alt="Technician replacing swollen laptop battery pack with safety isolation tools" width="960" height="536" loading="lazy" decoding="async">
+              <span class="service-media-badge">🔋 Battery Specialist</span>
             </div>
-            <h3>Hinge Rebuilds, Bricked BIOS & Fans</h3>
-            <p>Ranked #1 for Dell trackpads and #4.7 for bricked BIOS recovery. We re-anchor broken Lenovo/Dell hinges, flash corrupt EEPROM firmware, and clear HP 90B fan errors on-site.</p>
+            <h3>Laptop Battery Replacement & Swelling Safety</h3>
+            <p>Trackpad lifting, laptop case bulging, or battery dying after 20 minutes? We safely isolate and replace hazardous swollen lithium-ion battery packs with OEM-grade cells.</p>
             <div class="service-tag-row">
-              <span class="micro-tag">Rank 1 in GSC</span>
-              <span class="micro-tag">HP 90B Error Fix</span>
+              <span class="micro-tag">Swelling Hazard Removal</span>
+              <span class="micro-tag">OEM Calibration</span>
             </div>
             <div class="service-bottom-meta">
               <span>Flat fee $150–$170</span>
-              <span>Saves $300+</span>
+              <span>Zero Mark-up on Parts</span>
             </div>
           </article>
         </div>
