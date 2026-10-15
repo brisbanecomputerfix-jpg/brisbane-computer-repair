@@ -10,6 +10,9 @@ User-agent: Googlebot
 Allow: /
 Allow: /*.svg$
 Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
 Allow: /*.css$
 Allow: /*.js$
 
@@ -17,6 +20,9 @@ User-agent: Bingbot
 Allow: /
 Allow: /*.svg$
 Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
 Allow: /*.css$
 Allow: /*.js$
 
