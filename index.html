@@ -346,57 +346,81 @@
       position: sticky;
       top: 0;
       z-index: 120;
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.86);
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid rgba(226, 232, 240, 0.85);
       transition: all 0.25s ease;
     }
     .macos-menubar.scrolled {
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: var(--shadow-subtle);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 20px rgba(11, 21, 35, 0.05);
     }
     .menubar-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 0;
+      gap: 16px;
+      padding: 0 24px;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      height: 62px;
     }
 
     .brand-cluster {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
+      flex-shrink: 0;
     }
-    .brand-icon-box {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--ink);
+    .brand-link-wrap {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .brand-logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 9.5px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(11, 21, 35, 0.2);
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.28);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
     }
-    .brand-text .brand-title {
-      font-size: 19px;
+    .brand-link-wrap:hover .brand-logo-mark {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 113, 227, 0.38);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .brand-title {
+      font-size: 15.5px;
       font-weight: 800;
       color: var(--ink);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
+      white-space: nowrap;
     }
-    .brand-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
+    .brand-title-accent {
+      color: var(--apple-blue);
       font-weight: 700;
-      color: var(--apple-green-dark);
-      background: var(--apple-green-soft);
-      padding: 2px 10px;
-      border-radius: 999px;
-      margin-top: 2px;
     }
+    .brand-sub {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--slate);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      margin-top: 1.5px;
+    }
+
     .pulse-dot {
       width: 7px;
       height: 7px;
@@ -404,6 +428,7 @@
       border-radius: 50%;
       box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.25);
       animation: pulse 2s infinite ease-in-out;
+      flex-shrink: 0;
     }
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
@@ -413,7 +438,7 @@
     .desktop-nav {
       display: none;
       align-items: center;
-      gap: 6px;
+      gap: 3px;
       list-style: none;
     }
     @media (min-width: 992px) {
@@ -429,15 +454,15 @@
       background: none;
       border: none;
       font-family: inherit;
-      font-size: 14.5px;
-      font-weight: 700;
+      font-size: 13.5px;
+      font-weight: 600;
       color: var(--ink-secondary);
-      padding: 8px 14px;
-      border-radius: var(--radius-md);
+      padding: 6px 11px;
+      border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       text-decoration: none;
       transition: all 0.15s ease;
       white-space: nowrap;
@@ -460,13 +485,13 @@
       color: var(--apple-blue);
     }
     .nav-star-pill {
-      font-size: 11px;
-      font-weight: 800;
-      background: rgba(245, 158, 11, 0.14);
+      font-size: 10.5px;
+      font-weight: 700;
+      background: rgba(245, 158, 11, 0.12);
       color: #b45309;
-      padding: 2px 7px;
+      padding: 1px 6px;
       border-radius: 999px;
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      border: 1px solid rgba(245, 158, 11, 0.25);
     }
 
     /* Dropdown Glass Container */
@@ -599,83 +624,84 @@
       text-decoration: none;
     }
 
-    @media (max-width: 1160px) {
-      .brand-status-pill span:last-child {
-        display: none;
-      }
-      .brand-status-pill::after {
-        content: "No Call-Out Fee";
-      }
-    }
-    @media (max-width: 991px) {
-      .brand-status-pill {
-        display: none;
-      }
-    }
-
+    /* Right-side Un-Squished CTA Cluster */
     .nav-cta-group {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
+      flex-shrink: 0;
     }
-    .nav-cta-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      text-align: right;
-      line-height: 1.22;
-      user-select: none;
-    }
-    .nav-cta-status {
+    .nav-oncall-pill {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 11.5px;
-      font-weight: 800;
+      gap: 7px;
+      padding: 6px 13px;
+      background: var(--apple-green-soft);
       color: var(--apple-green-dark);
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+      border: 1px solid rgba(52, 199, 89, 0.28);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      user-select: none;
+      line-height: 1;
     }
-    .nav-cta-hours {
-      font-size: 11px;
-      font-weight: 600;
+    .nav-oncall-pill .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--apple-green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(52, 199, 89, 0.22);
+      animation: pulse 2s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+    .nav-oncall-pill .oncall-title {
+      font-weight: 700;
+      color: var(--apple-green-dark);
+    }
+    .nav-oncall-pill .oncall-hours {
       color: var(--slate);
+      font-weight: 500;
+      font-size: 11px;
+    }
+    @media (max-width: 1240px) {
+      .nav-oncall-pill .oncall-hours {
+        display: none;
+      }
+    }
+    @media (max-width: 991px) {
+      .nav-oncall-pill {
+        display: none;
+      }
     }
     .nav-phone-btn {
-      padding: 8px 16px;
-      min-height: 44px;
-      border-radius: var(--radius-md);
-      box-shadow: 0 4px 14px rgba(52, 199, 89, 0.35);
+      background: var(--apple-green);
+      background: linear-gradient(180deg, #34c759 0%, #28a745 100%);
+      color: #ffffff !important;
+      padding: 0 16px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(36, 138, 61, 0.3);
+      box-shadow: 0 2px 10px rgba(52, 199, 89, 0.32);
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 7px;
+      text-decoration: none;
+      white-space: nowrap;
+      line-height: 1;
     }
     .nav-phone-btn:hover {
+      background: linear-gradient(180deg, #2eb350 0%, #228b3a 100%);
+      color: #ffffff !important;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(52, 199, 89, 0.45);
-    }
-    .nav-btn-labels {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      line-height: 1.15;
-    }
-    .nav-btn-call {
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      opacity: 0.95;
-    }
-    .nav-btn-price {
-      font-weight: 600;
-      opacity: 0.9;
+      box-shadow: 0 4px 16px rgba(52, 199, 89, 0.45);
     }
     .nav-btn-number {
-      font-size: 15px;
+      font-size: 13.5px;
       font-weight: 800;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
     }
     .phone-wiggle-icon {
       flex-shrink: 0;
@@ -689,49 +715,82 @@
       100% { transform: rotate(8deg); }
     }
 
-    @media (max-width: 1220px) {
-      .nav-cta-meta {
-        display: none;
-      }
+    /* Sidebar Trigger Button (Desktop & Mobile) */
+    .sidebar-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 38px;
+      padding: 0 12px;
+      background: rgba(248, 250, 252, 0.95);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .sidebar-trigger-btn:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: var(--apple-blue);
+      box-shadow: 0 2px 10px rgba(0, 113, 227, 0.12);
+      transform: translateY(-1px);
+    }
+    .sidebar-trigger-btn:active {
+      transform: translateY(0) scale(0.97);
+    }
+    .sidebar-trigger-text {
+      display: inline-block;
+      letter-spacing: -0.01em;
+    }
+    .sidebar-trigger-kbd {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: var(--slate);
+      line-height: 1.3;
+      margin-left: 2px;
     }
     @media (max-width: 991px) {
-      .nav-btn-price {
+      .sidebar-trigger-btn {
+        width: 38px;
+        padding: 0;
+        justify-content: center;
+      }
+      .sidebar-trigger-text,
+      .sidebar-trigger-kbd {
         display: none;
       }
+      .brand-sub {
+        display: none;
+      }
+      .brand-title {
+        font-size: 14.5px;
+      }
       .nav-phone-btn {
-        padding: 8px 14px;
+        height: 36px;
+        padding: 0 12px;
       }
       .nav-btn-number {
-        font-size: 14px;
+        font-size: 13px;
       }
     }
     @media (max-width: 480px) {
-      .nav-btn-call {
+      .brand-title-accent {
         display: none;
       }
-      .nav-phone-btn {
-        padding: 8px 12px;
-        min-height: 40px;
+      .brand-title::after {
+        content: " PC Repair";
+        color: var(--apple-blue);
       }
-    }
-    .sidebar-trigger-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--card-solid);
-      border: 1px solid var(--line);
-      color: var(--ink);
-      padding: 8px 14px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: var(--shadow-subtle);
-      transition: all 0.15s ease;
-    }
-    .sidebar-trigger-btn:hover {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
     }
 
     /* Buttons: Apple Cupertino Geometry */
@@ -830,6 +889,32 @@
       justify-content: space-between;
       border-bottom: 1px solid var(--line);
     }
+    .sidebar-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sidebar-action-btn {
+      background: #f1f5f9;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px 11px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--slate);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+    .sidebar-action-btn:hover {
+      background: #ffffff;
+      color: var(--apple-blue);
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 6px rgba(0, 113, 227, 0.1);
+    }
     .sidebar-close-btn {
       background: #f1f5f9;
       border: 1px solid var(--line);
@@ -846,6 +931,78 @@
     }
     .sidebar-close-btn:hover {
       background: #e2e8f0;
+      color: var(--ink);
+    }
+    @media (max-width: 1023px) {
+      .sidebar-pin-btn {
+        display: none !important;
+      }
+    }
+
+    /* Desktop Pinned / Docked Sidebar Layout */
+    @media (min-width: 1024px) {
+      body.sidebar-docked {
+        padding-left: 380px !important;
+        transition: padding-left 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      body.sidebar-docked .saas-sidebar {
+        left: 0 !important;
+        box-shadow: 4px 0 24px rgba(11, 21, 35, 0.08);
+        border-right: 1px solid var(--line);
+      }
+      body.sidebar-docked .saas-sidebar-backdrop {
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      body.sidebar-docked .edge-sidebar-tab {
+        opacity: 0;
+        pointer-events: none;
+      }
+      body.sidebar-docked .sidebar-pin-btn {
+        background: var(--apple-blue-soft);
+        color: var(--apple-blue);
+        border-color: rgba(0, 113, 227, 0.3);
+      }
+    }
+
+    /* Floating Edge Sidebar Quick-Access Pill (Desktop) */
+    .edge-sidebar-tab {
+      position: fixed;
+      left: 24px;
+      bottom: 24px;
+      z-index: 95;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      display: none;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(11, 21, 35, 0.12), 0 1px 3px rgba(11, 21, 35, 0.05);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @media (min-width: 992px) {
+      .edge-sidebar-tab {
+        display: inline-flex;
+      }
+    }
+    .edge-sidebar-tab:hover {
+      background: #ffffff;
+      color: var(--apple-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 113, 227, 0.22);
+      border-color: rgba(0, 113, 227, 0.35);
+    }
+    .edge-sidebar-tab:active {
+      transform: translateY(0);
     }
     .sidebar-search-box {
       padding: 14px 24px 8px;
@@ -2389,7 +2546,13 @@
         </svg>
         <span style="font-weight: 800; font-size: 16px; color: var(--ink);">Navigation Menu</span>
       </div>
-      <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Navigation">&times;</button>
+      <div class="sidebar-header-actions">
+        <button class="sidebar-action-btn sidebar-pin-btn" id="sidebarPinBtn" title="Pin / Dock Sidebar to Page (Desktop)" aria-label="Pin Sidebar">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 3l5 5-2 2-2-2-4 4 1 5-2 2-4-4-5 5-2-2 5-5-4-4 2-2 5 1 4-4-2-2 2-2z"/></svg>
+          <span class="pin-status-text">Pin</span>
+        </button>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Navigation">&times;</button>
+      </div>
     </div>
 
     <!-- SaaS Fast Search / Filter Input -->
@@ -2469,28 +2632,37 @@
        macOS / SF Glass Menubar Header
        ======================================================================== -->
   <header class="macos-menubar" id="topNav">
-    <div class="container menubar-inner">
+    <div class="menubar-inner">
       <div class="brand-cluster">
-        <button class="sidebar-trigger-btn" id="sidebarOpenBtn" aria-label="Open SaaS Navigation">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-          <span>Menu</span>
+        <button class="sidebar-trigger-btn" id="sidebarOpenBtn" aria-label="Open Navigation Directory" title="Toggle Navigation & Services Sidebar (Ctrl + B)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 3v18"/></svg>
+          <span class="sidebar-trigger-text">Menu</span>
+          <span class="sidebar-trigger-kbd">⌘B</span>
         </button>
-        <a href="#main-content" style="display: flex; align-items: center; gap: 12px; color: inherit;" aria-label="Brisbane Computer Repair - Mobile PC and Mac Support Home">
-          <div class="brand-icon-box" role="img" aria-label="Brisbane Computer Repair Official Badge - Mobile PC and Mac Tech Support in Greater Brisbane">
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <rect width="32" height="32" rx="7" fill="#0071e3"/>
-              <rect x="6" y="8" width="20" height="13" rx="1.5" stroke="#ffffff" stroke-width="2"/>
-              <line x1="11" y1="24" x2="21" y2="24" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
-              <line x1="16" y1="21" x2="16" y2="24" stroke="#ffffff" stroke-width="2"/>
-              <path d="M12 14.5L15 17.5L20 12" stroke="#34c759" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <a href="#main-content" class="brand-link-wrap" aria-label="Brisbane Computer Repair - Mobile PC and Mac Support Home">
+          <div class="brand-logo-mark" role="img" aria-label="Brisbane Computer Repair Official Logo">
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bcrBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0071e3"/>
+                  <stop offset="100%" stop-color="#0056b8"/>
+                </linearGradient>
+                <linearGradient id="bcrGlassGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+                </linearGradient>
+              </defs>
+              <rect width="38" height="38" rx="9.5" fill="url(#bcrBrandGrad)"/>
+              <rect x="0.75" y="0.75" width="36.5" height="36.5" rx="8.75" stroke="url(#bcrGlassGlow)" stroke-width="1.5"/>
+              <rect x="9" y="8" width="20" height="14" rx="2" stroke="#ffffff" stroke-width="1.8" fill="rgba(0, 24, 60, 0.3)"/>
+              <path d="M14.5 15L17.5 18L23.5 11.8" stroke="#34c759" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 24C6 23.4 6.5 23 7.1 23H30.9C31.5 23 32 23.4 32 24V24.8C32 25.9 31.1 26.8 30 26.8H8C6.9 26.8 6 25.9 6 24.8V24Z" fill="#ffffff"/>
+              <rect x="16.5" y="23" width="5" height="1.2" rx="0.6" fill="#0056b8"/>
             </svg>
           </div>
           <div class="brand-text">
-            <span class="brand-title">Brisbane Computer Repair</span>
-            <div class="brand-status-pill">
-              <span class="pulse-dot"></span>
-              <span>Mobile Tech Available · No Call-Out Fee</span>
-            </div>
+            <span class="brand-title">Brisbane <span class="brand-title-accent">Computer Repair</span></span>
+            <span class="brand-sub">Mobile PC &amp; Mac Tech · No Call-Out Fee</span>
           </div>
         </a>
       </div>
@@ -2698,19 +2870,14 @@
       </nav>
 
       <div class="nav-cta-group">
-        <div class="nav-cta-meta" title="Greater Brisbane On-Site Computer Repair">
-          <div class="nav-cta-status">
-            <span class="pulse-dot"></span>
-            <span>Tech On-Call Now</span>
-          </div>
-          <div class="nav-cta-hours">8am–8pm · No Call-Out Fee</div>
+        <div class="nav-oncall-pill" title="Technician active for same-day mobile dispatch across Greater Brisbane">
+          <span class="pulse-dot"></span>
+          <span class="oncall-title">Tech On-Call</span>
+          <span class="oncall-hours">· 8am–8pm</span>
         </div>
         <a href="tel:+61468991300" class="btn btn-green nav-phone-btn" aria-label="Call Ike at 0468 991 300">
-          <svg class="phone-wiggle-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <div class="nav-btn-labels">
-            <span class="nav-btn-call">Call Now <span class="nav-btn-price">· Flat $150–$170</span></span>
-            <span class="nav-btn-number">0468 991 300</span>
-          </div>
+          <svg class="phone-wiggle-icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="nav-btn-number">0468 991 300</span>
         </a>
       </div>
     </div>
@@ -3975,6 +4142,12 @@
     </a>
   </aside>
 
+  <!-- Floating Edge Sidebar Quick-Access Pill (Desktop) -->
+  <button class="edge-sidebar-tab" id="edgeSidebarBtn" aria-label="Open Sidebar Navigation" title="Quick Directory & Services (Ctrl + B)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 3v18"/></svg>
+    <span>Sidebar Menu</span>
+  </button>
+
   <!-- ========================================================================
        iPhone Dynamic Action Island (Mobile Floating Dock)
        ======================================================================== -->
@@ -4031,38 +4204,126 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // SaaS Sidebar Drawer Toggle
+      // SaaS Sidebar Drawer & Desktop Dock Toggle
       var sidebar = document.getElementById('sidebarMenu');
       var backdrop = document.getElementById('sidebarBackdrop');
       var openBtn = document.getElementById('sidebarOpenBtn');
       var closeBtn = document.getElementById('sidebarCloseBtn');
       var dockBtn = document.getElementById('dockMenuBtn');
+      var pinBtn = document.getElementById('sidebarPinBtn');
+      var edgeBtn = document.getElementById('edgeSidebarBtn');
+
+      function isDocked() {
+        return document.body.classList.contains('sidebar-docked') && window.innerWidth >= 1024;
+      }
 
       function openSidebar() {
-        if (sidebar && backdrop) {
-          sidebar.classList.add('active');
-          backdrop.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        }
+        if (!sidebar) return;
+        if (isDocked()) return;
+        sidebar.classList.add('active');
+        if (backdrop) backdrop.classList.add('active');
+        if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        var searchInput = document.getElementById('sidebarSearch');
+        if (searchInput) setTimeout(function() { searchInput.focus(); }, 120);
       }
 
       function closeSidebar() {
-        if (sidebar && backdrop) {
-          sidebar.classList.remove('active');
-          backdrop.classList.remove('active');
-          document.body.style.overflow = '';
+        if (!sidebar) return;
+        if (isDocked()) return;
+        sidebar.classList.remove('active');
+        if (backdrop) backdrop.classList.remove('active');
+        if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      function toggleSidebar() {
+        if (isDocked()) {
+          togglePin();
+          return;
+        }
+        if (sidebar && sidebar.classList.contains('active')) {
+          closeSidebar();
+        } else {
+          openSidebar();
         }
       }
 
-      if (openBtn) openBtn.addEventListener('click', openSidebar);
-      if (dockBtn) dockBtn.addEventListener('click', openSidebar);
-      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      function togglePin() {
+        if (window.innerWidth < 1024) return;
+        var willDock = !document.body.classList.contains('sidebar-docked');
+        if (willDock) {
+          document.body.classList.add('sidebar-docked');
+          if (sidebar) sidebar.classList.remove('active');
+          if (backdrop) backdrop.classList.remove('active');
+          document.body.style.overflow = '';
+          if (pinBtn) {
+            var pinText = pinBtn.querySelector('.pin-status-text');
+            if (pinText) pinText.textContent = 'Unpin';
+            pinBtn.title = 'Unpin sidebar from screen';
+          }
+          try { localStorage.setItem('bcr_sidebar_docked', 'true'); } catch(e) {}
+        } else {
+          document.body.classList.remove('sidebar-docked');
+          if (pinBtn) {
+            var pinText = pinBtn.querySelector('.pin-status-text');
+            if (pinText) pinText.textContent = 'Pin';
+            pinBtn.title = 'Pin / Dock Sidebar to Page (Desktop)';
+          }
+          try { localStorage.setItem('bcr_sidebar_docked', 'false'); } catch(e) {}
+          closeSidebar();
+        }
+      }
+
+      if (openBtn) openBtn.addEventListener('click', toggleSidebar);
+      if (edgeBtn) edgeBtn.addEventListener('click', toggleSidebar);
+      if (dockBtn) dockBtn.addEventListener('click', toggleSidebar);
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          if (isDocked()) {
+            togglePin();
+          } else {
+            closeSidebar();
+          }
+        });
+      }
+      if (pinBtn) pinBtn.addEventListener('click', togglePin);
       if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+      // Restore saved pinned state on desktop
+      try {
+        if (window.innerWidth >= 1200 && localStorage.getItem('bcr_sidebar_docked') === 'true') {
+          document.body.classList.add('sidebar-docked');
+          if (pinBtn) {
+            var pinText = pinBtn.querySelector('.pin-status-text');
+            if (pinText) pinText.textContent = 'Unpin';
+            pinBtn.title = 'Unpin sidebar from screen';
+          }
+        }
+      } catch(e) {}
+
+      // Keyboard Shortcut: Ctrl+B or Cmd+B to toggle, Escape to close
+      document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'b' || e.key === 'B')) {
+          e.preventDefault();
+          toggleSidebar();
+        } else if (e.key === 'Escape') {
+          if (isDocked()) {
+            togglePin();
+          } else if (sidebar && sidebar.classList.contains('active')) {
+            closeSidebar();
+          }
+        }
+      });
 
       // Auto-close sidebar on link click
       var sidebarLinks = document.querySelectorAll('.saas-sidebar a');
       sidebarLinks.forEach(function(link) {
-        link.addEventListener('click', closeSidebar);
+        link.addEventListener('click', function() {
+          if (!isDocked()) {
+            closeSidebar();
+          }
+        });
       });
 
       // SaaS Sidebar Instant Search / Filter
