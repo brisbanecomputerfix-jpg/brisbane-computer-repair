@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestial Sun & Moon Theme Toggle — Interactive Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0b1523;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --card: #f8fafc;
+    }
+    html.dark {
+      --bg: #090d16;
+      --fg: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.12);
+      --card: #111827;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      transition: background-color 1.74s cubic-bezier(0.65, 0, 0.35, 1), color 1.74s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .demo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      max-width: 520px;
+      text-align: center;
+    }
+    
+    /* SunMoonThemeToggle Button Styling */
+    .sun-moon-toggle-btn {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      flex-shrink: 0;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      color: var(--fg);
+      width: 56px;
+      height: 56px;
+      background: transparent;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: filter 0.2s ease, transform 0.15s ease, border-color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .sun-moon-toggle-btn:hover {
+      filter: brightness(1.12);
+      transform: scale(1.04);
+    }
+    .sun-moon-toggle-btn:active {
+      transform: scale(0.97);
+    }
+    .sun-moon-toggle-btn:focus-visible {
+      outline: 2px solid #0071e3;
+      outline-offset: 2px;
+    }
+
+    /* Sky Backdrops */
+    .sky-layer {
+      position: absolute;
+      inset: 0;
+      z-index: -10;
+      pointer-events: none;
+      transition: opacity 1.74s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .sky-night {
+      background: linear-gradient(180deg, #090f2a 0%, #16204b 60%, #2a2f66 100%);
+      opacity: 1;
+    }
+    .sky-day {
+      background: linear-gradient(180deg, #4ea8ff 0%, #9fd3ff 60%, #e3f3ff 100%);
+      opacity: 0;
+    }
+    html:not(.dark) .sky-night { opacity: 0; }
+    html:not(.dark) .sky-day { opacity: 1; }
+
+    /* Twinkling Stars */
+    .star {
+      position: absolute;
+      border-radius: 9999px;
+      background: #ffffff;
+      opacity: 0.6;
+      animation: starTwinkle 2.4s infinite ease-in-out;
+    }
+    @keyframes starTwinkle {
+      0%, 100% { opacity: 0.35; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Celestial Bodies: Sun and Moon */
+    .celestial-body {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .moon-body {
+      color: #fde68a;
+      filter: drop-shadow(0 0 8px rgba(252, 211, 77, 0.7));
+    }
+    .sun-body {
+      color: #fb923c;
+      filter: drop-shadow(0 0 10px rgba(251, 146, 60, 0.8));
+    }
+    .celestial-svg {
+      width: 50%;
+      height: 50%;
+    }
+
+    .demo-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .demo-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--fg);
+    }
+    .demo-desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .demo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 24px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+    .demo-card code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #0071e3;
+      background: rgba(0, 113, 227, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12.5px;
+    }
+    .back-link {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0071e3;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demo-container">
+    <!-- Celestial SunMoonThemeToggle Button -->
+    <button type="button" class="sun-moon-toggle-btn" id="sunMoonBtn" aria-label="Toggle light and dark theme">
+      <!-- Sky Day/Night Layers -->
+      <span class="sky-layer sky-night" id="skyNight">
+        <span class="star" style="left: 24%; top: 22%; width: 3.2px; height: 3.2px; animation-duration: 2.1s;"></span>
+        <span class="star" style="left: 66%; top: 16%; width: 2.4px; height: 2.4px; animation-duration: 2.6s; animation-delay: -0.5s;"></span>
+        <span class="star" style="left: 80%; top: 42%; width: 3.6px; height: 3.6px; animation-duration: 1.9s; animation-delay: -1s;"></span>
+        <span class="star" style="left: 38%; top: 58%; width: 2.2px; height: 2.2px; animation-duration: 2.9s; animation-delay: -1.5s;"></span>
+        <span class="star" style="left: 58%; top: 74%; width: 2.8px; height: 2.8px; animation-duration: 2.3s; animation-delay: -0.8s;"></span>
+        <span class="star" style="left: 14%; top: 72%; width: 2.4px; height: 2.4px; animation-duration: 2.5s; animation-delay: -0.3s;"></span>
+      </span>
+      <span class="sky-layer sky-day" id="skyDay"></span>
+
+      <!-- Moon (Lucide Moon) -->
+      <span class="celestial-body moon-body" id="moonBody">
+        <svg class="celestial-svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+      </span>
+
+      <!-- Sun (Lucide Sun) -->
+      <span class="celestial-body sun-body" id="sunBody">
+        <svg class="celestial-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+      </span>
+    </button>
+
+    <div class="demo-info">
+      <h1 class="demo-title">The moon sets, the sun rises</h1>
+      <p class="demo-desc">Interactive Celestial Theme Toggle component with orbital arc trajectories, back-easing, and twinkling stars.</p>
+    </div>
+
+    <div class="demo-card">
+      <p>📁 Component copied to: <code>components/ui/sun-moon-theme-toggle.tsx</code></p>
+      <p>🧪 Demo harness saved to: <code>components/demo.tsx</code></p>
+      <p style="margin-top: 6px;">Supported Stack: <strong>shadcn/ui</strong> · <strong>Tailwind CSS</strong> · <strong>TypeScript</strong></p>
+    </div>
+
+    <a href="index.html" class="back-link">← Return to Brisbane Computer Repair</a>
+  </div>
+
+  <script>
+    (function() {
+      var ARC_RADIUS = 115;
+      var QUARTER_TURN = Math.PI / 2;
+      var KEYFRAME_STEPS = 30;
+      var DURATION = 1740;
+
+      var MOON = { side: -1, spin: 25 };
+      var SUN = { side: 1, spin: 120 };
+
+      function arcPoint(side, angle) {
+        return {
+          x: side * ARC_RADIUS * Math.sin(angle),
+          y: ARC_RADIUS * (1 - Math.cos(angle))
+        };
+      }
+      function easeInCubic(t) { return t * t * t; }
+      function easeOutBack(t) {
+        var o = 1.4;
+        return 1 + (o + 1) * Math.pow(t - 1, 3) + o * Math.pow(t - 1, 2);
+      }
+
+      function settingKeyframes(body) {
+        var kf = [];
+        for (var i = 0; i <= KEYFRAME_STEPS; i++) {
+          var t = i / KEYFRAME_STEPS;
+          var tr = easeInCubic(t);
+          var pt = arcPoint(body.side, tr * QUARTER_TURN);
+          kf.push({
+            offset: t,
+            transform: 'translate(' + pt.x + '%, ' + pt.y + '%) rotate(' + (body.side * body.spin * tr) + 'deg)',
+            opacity: t < 0.55 ? 1 : (1 - t) / 0.45
+          });
+        }
+        return kf;
+      }
+
+      function risingKeyframes(body) {
+        var kf = [];
+        for (var i = 0; i <= KEYFRAME_STEPS; i++) {
+          var t = i / KEYFRAME_STEPS;
+          var rem = 1 - easeOutBack(t);
+          var pt = arcPoint(body.side, rem * QUARTER_TURN);
+          kf.push({
+            offset: t,
+            transform: 'translate(' + pt.x + '%, ' + pt.y + '%) rotate(' + (body.side * body.spin * rem) + 'deg) scale(' + (1 - 0.28 * rem) + ')',
+            opacity: Math.min(1, t / 0.3)
+          });
+        }
+        return kf;
+      }
+
+      var KEYFRAMES = {
+        moonSets: settingKeyframes(MOON),
+        moonRises: risingKeyframes(MOON),
+        sunSets: settingKeyframes(SUN),
+        sunRises: risingKeyframes(SUN)
+      };
+
+      var btn = document.getElementById('sunMoonBtn');
+      var moon = document.getElementById('moonBody');
+      var sun = document.getElementById('sunBody');
+      var skyNight = document.getElementById('skyNight');
+      var skyDay = document.getElementById('skyDay');
+
+      var isDark = true;
+      var activeAnimations = [];
+
+      function setResting() {
+        if (isDark) {
+          moon.style.transform = 'none';
+          moon.style.opacity = '1';
+          sun.style.transform = 'translate(' + (SUN.side * ARC_RADIUS) + '%, ' + ARC_RADIUS + '%)';
+          sun.style.opacity = '0';
+        } else {
+          sun.style.transform = 'none';
+          sun.style.opacity = '1';
+          moon.style.transform = 'translate(' + (MOON.side * ARC_RADIUS) + '%, ' + ARC_RADIUS + '%)';
+          moon.style.opacity = '0';
+        }
+      }
+      setResting();
+
+      btn.addEventListener('click', function() {
+        if (activeAnimations.length > 0) {
+          activeAnimations.forEach(function(a) { a.reverse(); });
+          isDark = !isDark;
+          document.documentElement.classList.toggle('dark', isDark);
+          return;
+        }
+
+        var nextDark = !isDark;
+        var toLight = !nextDark;
+
+        var setting = (toLight ? moon : sun).animate(toLight ? KEYFRAMES.moonSets : KEYFRAMES.sunSets, {
+          duration: DURATION * 0.65,
+          fill: 'both'
+        });
+        var rising = (toLight ? sun : moon).animate(toLight ? KEYFRAMES.sunRises : KEYFRAMES.moonRises, {
+          duration: DURATION * 0.64,
+          delay: DURATION * 0.36,
+          fill: 'both'
+        });
+
+        activeAnimations = [setting, rising];
+        isDark = nextDark;
+        document.documentElement.classList.toggle('dark', isDark);
+
+        Promise.all(activeAnimations.map(function(a) { return a.finished; })).then(function() {
+          activeAnimations.forEach(function(a) { a.cancel(); });
+          activeAnimations = [];
+          setResting();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
