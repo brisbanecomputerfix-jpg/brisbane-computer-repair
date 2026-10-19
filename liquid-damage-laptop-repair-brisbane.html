@@ -663,6 +663,299 @@
       flex-wrap: wrap;
     }
 
+    /* Hero Laboratory Showcase (Split Side-by-Side with Emergency Highlights) */
+    .hero-lab-showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 430px) 1fr;
+      gap: 32px;
+      align-items: stretch;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-lab-showcase {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    .hero-lab-diagram-col {
+      display: flex;
+      flex-direction: column;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-lg);
+      background: var(--card-solid);
+      max-width: 430px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hero-diagram-frame {
+      position: relative;
+      background: #0b1523;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+    }
+
+    .hero-diagram-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-diagram-frame:hover .hero-diagram-img {
+      transform: scale(1.02);
+    }
+
+    .hero-diagram-pill {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      background: rgba(11, 21, 35, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+
+    .hero-diagram-pill .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--apple-green);
+      animation: pulseGlow 2s infinite;
+    }
+
+    .diagram-expand-btn {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(11, 21, 35, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .diagram-expand-btn:hover {
+      background: var(--apple-blue);
+      transform: scale(1.04);
+    }
+
+    /* Lab Highlights Companion Column */
+    .hero-lab-highlights-col {
+      background: var(--card-glass);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px 34px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      .hero-lab-highlights-col {
+        padding: 22px 18px;
+      }
+    }
+
+    .highlights-header {
+      margin-bottom: 20px;
+    }
+
+    .highlights-eyebrow {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--apple-blue);
+      margin-bottom: 6px;
+    }
+
+    .highlights-title {
+      font-size: clamp(19px, 2.2vw, 25px);
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .highlights-desc {
+      font-size: 14px;
+      color: var(--slate);
+      line-height: 1.55;
+    }
+
+    .highlights-feature-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .highlight-feature-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 12px 15px;
+      background: var(--card-solid);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .highlight-feature-item:hover {
+      border-color: var(--apple-blue);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .highlight-feature-icon {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .highlight-feature-content h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .highlight-feature-content p {
+      font-size: 12.5px;
+      color: var(--slate);
+      line-height: 1.48;
+    }
+
+    .highlights-cta-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .highlights-hotline-note {
+      font-size: 13px;
+      color: var(--slate);
+      font-weight: 600;
+    }
+
+    /* Full-Screen Diagram Lightbox Modal */
+    .diagram-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .diagram-modal.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .diagram-modal-content {
+      position: relative;
+      max-width: 860px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--card-solid);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .diagram-modal-img {
+      max-width: 100%;
+      max-height: calc(92vh - 65px);
+      object-fit: contain;
+      display: block;
+    }
+
+    .diagram-modal-bar {
+      width: 100%;
+      padding: 12px 20px;
+      background: var(--card-glass);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--slate);
+    }
+
+    .diagram-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(11, 21, 35, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 20px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 10;
+    }
+
+    .diagram-modal-close:hover {
+      transform: scale(1.1);
+      background: var(--apple-blue);
+    }
+
     /* Emergency Golden Hour Box */
     .golden-hour-card {
       background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, rgba(220, 38, 38, 0.04) 100%);
@@ -1389,12 +1682,78 @@
         </a>
       </div>
 
-      <!-- Workshop Bench Image -->
-      <div class="hero-visual-wrap">
-        <img src="images/liquid-damage-motherboard-repair-workshop-bench.jpg" alt="Specialist computer repair workshop bench in Brisbane with ultrasonic cleaning bath, multimeters, micro-soldering stations and dismantled motherboards" class="hero-visual-img" width="1200" height="1600">
-        <div class="hero-visual-caption">
-          <span><strong>Brisbane Repair Lab Bench:</strong> Industrial Crest ultrasonic tank, stereo zoom microscopes, Hakko soldering stations &amp; precision multimeters.</span>
-          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--apple-blue);">ABN: 98 288 669 674 · No Call-Out Fee</span>
+      <!-- Laboratory Showcase: Workshop Bench Diagram & Capabilities Split -->
+      <div class="hero-lab-showcase">
+        <div class="hero-lab-diagram-col">
+          <div class="hero-diagram-frame" id="triggerDiagramModal" role="button" tabindex="0" aria-label="Zoom full workshop diagram">
+            <img src="images/liquid-damage-motherboard-repair-workshop-bench.jpg" alt="Specialist computer repair workshop bench in Brisbane with ultrasonic cleaning bath, multimeters, micro-soldering stations and dismantled motherboards" class="hero-diagram-img" width="765" height="1024" loading="eager">
+            <div class="hero-diagram-pill">
+              <span class="live-dot"></span>
+              <span>Brisbane Hardware Lab Bench</span>
+            </div>
+            <button type="button" class="diagram-expand-btn" aria-label="Expand diagram to full screen">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+              <span>View Full Details</span>
+            </button>
+          </div>
+          <div class="hero-visual-caption">
+            <span><strong>Repair Workbench:</strong> 40kHz ultrasonic bath, stereo zoom microscopes &amp; Hakko micro-soldering.</span>
+            <span style="font-family: var(--font-mono); font-size: 12.5px; color: var(--apple-blue); white-space: nowrap;">ABN: 98 288 669 674</span>
+          </div>
+        </div>
+
+        <div class="hero-lab-highlights-col">
+          <div>
+            <div class="highlights-header">
+              <span class="highlights-eyebrow">Component-Level Engineering</span>
+              <h3 class="highlights-title">Dedicated Motherboard &amp; Logic Board Restoration Standards</h3>
+              <p class="highlights-desc">
+                Unlike generic repair stores that automatically quote $1,500+ logic board replacements, our Brisbane lab repairs original circuit boards down to the microscopic surface-mount component level.
+              </p>
+            </div>
+
+            <div class="highlights-feature-list">
+              <div class="highlight-feature-item">
+                <div class="highlight-feature-icon">🔬</div>
+                <div class="highlight-feature-content">
+                  <h4>40,000Hz Ultrasonic Cavitation Bath</h4>
+                  <p>Cavitation micro-bubbles implode at 40kHz, washing away conductive mineral shorts and corrosion trapped beneath surface-soldered BGA chips.</p>
+                </div>
+              </div>
+
+              <div class="highlight-feature-item">
+                <div class="highlight-feature-icon">⚡</div>
+                <div class="highlight-feature-content">
+                  <h4>Micro-Soldering &amp; Trace Rebuilding</h4>
+                  <p>Replacing burned 0201 capacitors, blown MOSFETs, and rebuilding severed copper traces under 40x stereoscopic magnification.</p>
+                </div>
+              </div>
+
+              <div class="highlight-feature-item">
+                <div class="highlight-feature-icon">🛡️</div>
+                <div class="highlight-feature-content">
+                  <h4>Emergency Soldered NAND Data Retrieval</h4>
+                  <p>Direct low-voltage power rail injection bypasses blown PMICs to safely pull files from Apple Silicon (M1–M4) and soldered PC SSDs.</p>
+                </div>
+              </div>
+
+              <div class="highlight-feature-item">
+                <div class="highlight-feature-icon">🏷️</div>
+                <div class="highlight-feature-content">
+                  <h4>100% Bench Diagnostic Credit</h4>
+                  <p>Your $50–$150 teardown &amp; microscope corrosion mapping fee is credited 100% toward your approved repair. Transparent, honest pricing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlights-cta-bar">
+            <a href="tel:+61468991300" class="btn btn-red" style="padding: 10px 20px; font-size: 14px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Call 0468 991 300 for Urgent Triage</span>
+            </a>
+            <span class="highlights-hotline-note">Direct bench line · No call-out fee</span>
+          </div>
         </div>
       </div>
     </section>
@@ -2007,6 +2366,57 @@
           try {
             localStorage.setItem('bcr_theme', isDark ? 'dark' : 'light');
           } catch(e) {}
+        });
+      }
+    })();
+  </script>
+
+  <!-- Diagram Lightbox Modal -->
+  <div id="diagramModal" class="diagram-modal" role="dialog" aria-modal="true" aria-label="Full Workshop Diagram Viewer">
+    <div class="diagram-modal-content">
+      <button type="button" class="diagram-modal-close" id="closeDiagramModal" aria-label="Close Diagram Viewer">&times;</button>
+      <img src="images/liquid-damage-motherboard-repair-workshop-bench.jpg" alt="Specialist computer repair workshop bench in Brisbane with ultrasonic cleaning bath, multimeters, micro-soldering stations and dismantled motherboards" class="diagram-modal-img">
+      <div class="diagram-modal-bar">
+        <span><strong>Brisbane Repair Lab Bench:</strong> Complete component-level diagnostic and ultrasonic recovery workspace.</span>
+        <span style="font-family: var(--font-mono); color: var(--apple-blue);">ABN: 98 288 669 674</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagram Lightbox Modal Logic -->
+  <script>
+    (function() {
+      var trigger = document.getElementById('triggerDiagramModal');
+      var modal = document.getElementById('diagramModal');
+      var closeBtn = document.getElementById('closeDiagramModal');
+      if (trigger && modal) {
+        function openModal() {
+          modal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+          modal.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+        trigger.addEventListener('click', openModal);
+        trigger.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal();
+          }
+        });
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeModal);
+        }
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modal.classList.contains('open')) {
+            closeModal();
+          }
         });
       }
     })();
